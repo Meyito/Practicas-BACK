@@ -12,5 +12,17 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    return "Welcome to Meyito Backend :3";
 });
+
+$app->get('/key', function () {
+    return str_random(32);
+});
+
+$app->group([
+    'prefix' => 'api/v1',
+    'namespace' => 'App\Http\Controllers\V1'
+],
+    function () use ($app) {
+        $app->get("development-plans", "DevelopmentPlanController@index");
+    });
