@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDimentionsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateDimentionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dimentions', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code', 5);
-            $table->string('name');
-            $table->integer('development_plan_id')->unsigned();
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->integer('secretary_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('development_plan_id')
-            ->references('id')
-            ->on('development_plans');
+            $table->foreign('secretary_id')
+                ->references('id')
+                ->on('secretaries');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateDimentionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dimentions');
+        Schema::dropIfExists('users');
     }
 }

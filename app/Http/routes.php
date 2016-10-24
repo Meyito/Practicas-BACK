@@ -45,4 +45,5 @@ $app->group([
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         $app->get("dimentions", "DimentionController@index");
         resource('people', 'PersonController');
+        resource('secretaries', 'SecretaryController');
     });
