@@ -11,6 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call('UsersTableSeeder');
+        $this->call('IdentificationTypeSeeder');
+        $this->command->info('identification types table seeded!');
+
+        if (app()->environment('local')) {
+            $this->seedLocalEnvironment();
+        }
+    }
+
+    public function seedLocalEnvironment() {
+        
     }
 }

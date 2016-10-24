@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Register a resource with the application.
+ *
+ * @param  string $uri
+ * @param  mixed $controller
+ */
+function resource($uri, $controller, $keyName = 'id') {
+    global $app;
+
+    $app->get($uri, $controller . '@index');
+    $app->get($uri . '/{' . $keyName . '}', $controller . '@show');
+    $app->post($uri, $controller . '@store');
+    $app->put($uri . '/{' . $keyName . '}', $controller . '@update');
+    $app->delete($uri . '/{' . $keyName . '}', $controller . '@destroy');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,4 +43,6 @@ $app->group([
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
+        $app->get("dimentions", "DimentionController@index");
+        resource('people', 'PersonController');
     });
