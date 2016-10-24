@@ -21,8 +21,10 @@ $app->get('/key', function () {
 
 $app->group([
     'prefix' => 'api/v1',
+    'middleware' => 'preflight',
     'namespace' => 'App\Http\Controllers\V1'
 ],
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
+        $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
     });

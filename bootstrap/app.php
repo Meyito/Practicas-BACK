@@ -25,6 +25,14 @@ $app = new Laravel\Lumen\Application(
 
  $app->withFacades();
 
+if (!class_exists('Response')) {
+    class_alias('Illuminate\Support\Facades\Response','Response');
+}
+
+if (!class_exists('Excel')) {
+    class_alias('Maatwebsite\Excel\Facades\Excel', 'Excel');
+}
+
  $app->withEloquent();
 
 /*
@@ -59,13 +67,15 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    //App\Http\Middleware\ExampleMiddleware::class
+    App\Http\Middleware\Preflight::class,
+ ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+     //'auth' => App\Http\Middleware\Authenticate::class,
+    'preflight' => App\Http\Middleware\Preflight::class
+ ]);
 
 /*
 |--------------------------------------------------------------------------

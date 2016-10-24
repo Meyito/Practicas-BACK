@@ -24,4 +24,40 @@ class DevelopmentPlanController extends Controller {
         $options = $request->all() ?: [];
         return response()->json($this->developmentPlan->get($options));
     }
+
+    public  function uploadPlan(Request $request){
+        $file = $this->getFile($request);
+    }
+
+    private function getFile($request) {
+
+        if (!$request->hasFile('file')) {
+            return response()->json("Debe suministrar un archivo de cargue",
+                IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        $file = $request->file('file');
+
+        if (!$this->isValid($file)) {
+            return response()->json(["error" => "No se cargó un archivo de excel válido."],
+                IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        return $file;
+    }
+
+    private function isValid($file) {
+
+        $validFileTypes = [
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        ];
+
+        if (!in_array($file->getMimeType(), $validFileTypes)) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
