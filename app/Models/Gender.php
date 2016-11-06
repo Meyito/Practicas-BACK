@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Description of Secretaries Model
+ * Description of Gender Model
  *
  * @author Melissa Delgado
  */
-class Secretaries extends Model {
-
-    protected $table = "secretaries";
+class Gender extends Model {
 
     protected $fillable = [
-        "name",
+        "name"
     ];
 
     protected $hidden = [

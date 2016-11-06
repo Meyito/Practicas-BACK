@@ -46,4 +46,6 @@ $app->group([
         $app->get("dimentions", "DimentionController@index");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');
+        resource('ethnic-groups', 'EthnicGroupController');
+        resource('genders', 'GenderController');
     });
