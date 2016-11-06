@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
  *
  * @author Melissa Delgado
  */
-class AgeRange extends Model {
+class AgeRange extends BaseModel {
 
     protected $table = "age_range";
 
@@ -25,7 +25,7 @@ class AgeRange extends Model {
     ];
 
     protected static $rules = [
-        'name' => 'required',
+        'name' => 'required|unique:age_range,name,:ID',
         'min_age' => 'required',
         'max_age' => 'required'
     ];
@@ -34,6 +34,7 @@ class AgeRange extends Model {
         "name.required" => "El nombre es requerido",
         "min_age.required" => "La edad mínima es requerido",
         "max_age.required" => "La edad máxima es requerido",
+        "name.unique" => "Ya existe un rango de edad con el nombre suministrado"
     ];
 
 }

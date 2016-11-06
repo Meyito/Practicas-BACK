@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
  *
  * @author Melissa Delgado
  */
-class SpecialCondition extends Model {
+class SpecialCondition extends BaseModel {
 
     protected $fillable = [
         "name"
@@ -21,11 +21,12 @@ class SpecialCondition extends Model {
     ];
 
     protected static $rules = [
-        'name' => 'required',
+        'name' => 'required|unique:special_conditions,name,:ID',
     ];
 
     protected $messages = [
-        "name.required" => "El nombre es requerido"
+        "name.required" => "El nombre es requerido",
+        "name.unique" => "Ya existe una condición especial con el nombre suministrado"
     ];
 
 }

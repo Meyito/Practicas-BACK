@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class User extends Model {
+class User extends BaseModel {
 
     protected $fillable = [
         "username",
@@ -18,7 +18,7 @@ class User extends Model {
     ];
 
     protected static $rules = [
-        'username' => 'required|unique:user,username,:ID',
+        'username' => 'required|unique:users,username,:ID',
         'password' => 'required'
     ];
 

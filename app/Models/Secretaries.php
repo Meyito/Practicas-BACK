@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
  *
  * @author Melissa Delgado
  */
-class Secretaries extends Model {
+class Secretaries extends BaseModel {
 
     protected $table = "secretaries";
 

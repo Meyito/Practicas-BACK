@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
  *
  * @author Melissa Delgado
  */
-class Gender extends Model {
+class Gender extends BaseModel {
 
     protected $fillable = [
         "name"
@@ -21,11 +21,12 @@ class Gender extends Model {
     ];
 
     protected static $rules = [
-        'name' => 'required',
+        'name' => 'required|unique:genders,name,:ID',
     ];
 
     protected $messages = [
         "name.required" => "El nombre es requerido",
+        "name.unique" => "Ya existe un género con el nombre suministrado"
     ];
 
 }

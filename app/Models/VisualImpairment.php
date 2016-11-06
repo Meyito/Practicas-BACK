@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Description of EthnicGroup Model
+ * Description of Visual Impairment Model
  *
  * @author Melissa Delgado
  */
-class EthnicGroup extends BaseModel {    
+class VisualImpairment extends BaseModel {
 
     protected $fillable = [
         "name"
@@ -21,12 +21,12 @@ class EthnicGroup extends BaseModel {
     ];
 
     protected static $rules = [
-        'name' => 'required|unique:ethnic_groups,name,:ID',
+        'name' => 'required|unique:visual_impairments,name,:ID',
     ];
 
     protected $messages = [
         "name.required" => "El nombre es requerido",
-        "name.unique" => "Ya existe un grupo etnico con el nombre suministrado"
+        "name.unique" => "Ya existe una discapacidad visual con el nombre suministrado"
     ];
 
 }

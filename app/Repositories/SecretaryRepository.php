@@ -9,6 +9,6 @@ namespace App\Repositories;
  */
 class SecretaryRepository extends EloquentRepository {
 
-    protected $model = "App\Models\Secretary";
+    protected $model = "App\Models\Secretaries";
 
 }

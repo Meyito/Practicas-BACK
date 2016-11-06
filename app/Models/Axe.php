@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
  *
  * @author Francisco Bastos
  */
-class Axe extends Model {
+class Axe extends BaseModel {
 
     protected $fillable = [
         "code",

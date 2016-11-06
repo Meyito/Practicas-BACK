@@ -43,11 +43,14 @@ $app->group([
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
-        $app->get("dimentions", "DimentionController@index");
+        resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');
         resource('ethnic-groups', 'EthnicGroupController');
         resource('genders', 'GenderController');
         resource('age-range', 'AgeRangeController');
-        resource('special-condition', 'SpecialConditionController');
+        resource('special-conditions', 'SpecialConditionController');
+        resource('visual-impairments', 'VisualImpairmentController');
+        resource('hearing-impairments', 'HearingImpairmentController');
+        resource('users', 'UserController');
     });
