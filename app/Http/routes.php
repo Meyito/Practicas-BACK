@@ -49,4 +49,5 @@ $app->group([
         resource('ethnic-groups', 'EthnicGroupController');
         resource('genders', 'GenderController');
         resource('age-range', 'AgeRangeController');
+        resource('special-condition', 'SpecialConditionController');
     });
