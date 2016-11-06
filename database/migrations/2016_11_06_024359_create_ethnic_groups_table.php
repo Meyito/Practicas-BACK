@@ -27,7 +27,7 @@ class CreateEthnicGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::create('ethnic_groups', function (Blueprint $table) {
+        Schema::dropIfExists('ethnic_groups', function (Blueprint $table) {
             //
         });
     }
