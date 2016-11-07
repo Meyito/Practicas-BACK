@@ -36,8 +36,19 @@ $app->get('/key', function () {
 });
 
 $app->group([
-    'prefix' => 'api/v1',
+    'namespace' => '\App\Http\Controllers\V1',
     'middleware' => 'preflight',
+    'prefix' => 'api/v1'], 
+    function () use ($app) {
+        $app->post('authenticate', 'AuthenticationController@authenticate');
+});
+
+$app->group([
+    'prefix' => 'api/v1',
+    'middleware' => [
+        'preflight',
+        'jwt-auth'
+    ],
     'namespace' => 'App\Http\Controllers\V1'
 ],
     function () use ($app) {
