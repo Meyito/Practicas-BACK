@@ -53,4 +53,9 @@ $app->group([
         resource('visual-impairments', 'VisualImpairmentController');
         resource('hearing-impairments', 'HearingImpairmentController');
         resource('users', 'UserController');
+        resource('motor-disabilities', 'MotorDisabilityController');
+        resource('victim-types', 'VictimTypeController');
+        resource('contractors', 'ContractorController');
+        resource('zones', 'ZoneController');
+        resource('administrative-unit-types', 'AdministrativeUnitTypeController');
     });
