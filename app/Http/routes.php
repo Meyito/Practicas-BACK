@@ -58,4 +58,5 @@ $app->group([
         resource('contractors', 'ContractorController');
         resource('zones', 'ZoneController');
         resource('administrative-unit-types', 'AdministrativeUnitTypeController');
+        resource('contractor-periods', 'ContractorPeriodController');
     });
