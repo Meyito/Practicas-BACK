@@ -64,4 +64,6 @@ $app->group([
         resource('goals', 'GoalController');
         resource('projects', 'ProjectController');
         resource('sisben-zones', 'SisbenZoneController');
+        resource('area-types', 'AreaTypeController');
+        resource('municipalities', 'MunicipalityController');
     });
