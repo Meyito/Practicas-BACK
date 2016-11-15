@@ -61,4 +61,7 @@ $app->group([
         resource('contractor-periods', 'ContractorPeriodController');
         resource('programs', 'ProgramController');
         resource('subprograms', 'SubprogramController');
+        resource('goals', 'GoalController');
+        resource('projects', 'ProjectController');
+        resource('sisben-zones', 'SisbenZoneController');
     });
