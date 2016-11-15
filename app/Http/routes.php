@@ -68,4 +68,5 @@ $app->group([
         resource('municipalities', 'MunicipalityController');
         resource('areas', 'AreaController');
         resource('administrative-units', 'AdministrativeUnitController');
+        resource('activities', 'ActivityController');
     });
