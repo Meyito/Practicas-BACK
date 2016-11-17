@@ -4,8 +4,10 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\DevelopmentPlan;
 use App\Repositories\DevelopmentPlanRepository as DevelopmentPlanRepo;
 use Illuminate\Http\Response as IlluminateResponse;
+use Excel;
 
 class DevelopmentPlanController extends Controller {
 
@@ -27,13 +29,38 @@ class DevelopmentPlanController extends Controller {
     }
 
     public  function uploadPlan(Request $request){
+
         $file = $this->getFile($request);
+
+        $data = $request->all()["data"];
+        $developmentPlan = new DevelopmentPlan($data);
+
+        if ($this->developmentPlan->create($developmentPlan)) {
+            try {
+                $reader = Excel::selectSheetsByIndex(0)->load($file->getRealPath(),
+                        null, null, true);
+
+                $results = $this->developmentPlan->bulkStore( $reader->toArray(), $developmentPlan->id );
+
+                if ($results === true) {
+                    return response()->json(['msg' => 'Se cargó el plan de desarrollo exitosamente.']);
+                } else {
+                    return response()->json($results,
+                                    IlluminateResponse::HTTP_BAD_REQUEST);
+                }
+            } catch (Exception $e) {
+                return response()->json(["error" => "Ocurrió un error inesperado en la carga del archivo."],
+                                IlluminateResponse::HTTP_BAD_REQUEST);
+            }
+        }
+
+        return response()->json($developmentPlan->getErrors(),
+            IlluminateResponse::HTTP_BAD_REQUEST);
     }
 
     private function getFile($request) {
-
         if (!$request->hasFile('file')) {
-            return response()->json("Debe suministrar un archivo de cargue",
+            return response()->json("Debe suministrar un archivo de plan de desarrollo.",
                 IlluminateResponse::HTTP_BAD_REQUEST);
         }
 
@@ -48,7 +75,6 @@ class DevelopmentPlanController extends Controller {
     }
 
     private function isValid($file) {
-
         $validFileTypes = [
             'application/vnd.ms-excel',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'

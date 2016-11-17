@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class Secretaries extends Model {
+/**
+ * Description of Secretaries Model
+ *
+ * @author Melissa Delgado
+ */
+class Secretaries extends BaseModel {
 
     protected $table = "secretaries";
 

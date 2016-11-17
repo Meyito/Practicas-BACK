@@ -54,7 +54,33 @@ $app->group([
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
-        $app->get("dimentions", "DimentionController@index");
+        resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');
+        resource('ethnic-groups', 'EthnicGroupController');
+        resource('genders', 'GenderController');
+        resource('age-range', 'AgeRangeController');
+        resource('special-conditions', 'SpecialConditionController');
+        resource('visual-impairments', 'VisualImpairmentController');
+        resource('hearing-impairments', 'HearingImpairmentController');
+        resource('users', 'UserController');
+        resource('motor-disabilities', 'MotorDisabilityController');
+        resource('victim-types', 'VictimTypeController');
+        resource('contractors', 'ContractorController');
+        resource('zones', 'ZoneController');
+        resource('administrative-unit-types', 'AdministrativeUnitTypeController');
+        resource('contractor-periods', 'ContractorPeriodController');
+        resource('programs', 'ProgramController');
+        resource('subprograms', 'SubprogramController');
+        resource('goals', 'GoalController');
+        resource('projects', 'ProjectController');
+        resource('sisben-zones', 'SisbenZoneController');
+        resource('area-types', 'AreaTypeController');
+        resource('municipalities', 'MunicipalityController');
+        resource('areas', 'AreaController');
+        resource('administrative-units', 'AdministrativeUnitController');
+        resource('activities', 'ActivityController');
+        resource('departments', 'DepartmentController');
+        resource('characterizations', 'CharacterizationController');
+        
     });

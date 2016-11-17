@@ -15,7 +15,6 @@ class Dimention extends BaseModel {
         "code",
         "name",
         "development_plan_id",
-        //"user_id"
     ];
 
     protected $hidden = [

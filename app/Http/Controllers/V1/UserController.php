@@ -5,8 +5,8 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\UserHelper;
-use App\Models\Person;
-use App\Repositories\PersonRepository as PersonRepo;
+use App\Models\User;
+use App\Repositories\UserRepository as UserRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
 class UserController extends Controller {
@@ -32,7 +32,7 @@ class UserController extends Controller {
 
         $data = $request->all();
 
-        $user = new Person($data);
+        $user = new User($data);
 
         if ($this->user->create($user)) {
             return response()->json($user);
