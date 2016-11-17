@@ -23,7 +23,6 @@ class CreateDimentionsTable extends Migration
             $table->foreign('development_plan_id')
             ->references('id')
             ->on('development_plans');
-            
         });
     }
 

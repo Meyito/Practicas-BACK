@@ -5,7 +5,7 @@ namespace App\Repositories;
 /**
  * Description of PersonRepository
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class PersonRepository extends EloquentRepository {
 

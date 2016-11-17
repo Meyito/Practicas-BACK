@@ -11,4 +11,9 @@ use App\Models\BaseModel;
  */
 class IdentificationType extends BaseModel {
 
+    protected $hidden = [
+        "updated_at",
+        "created_at"
+    ];
+
 }
