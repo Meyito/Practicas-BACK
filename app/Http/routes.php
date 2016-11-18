@@ -54,6 +54,7 @@ $app->group([
 ],
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
+        $app->get("axes", "AxeController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');

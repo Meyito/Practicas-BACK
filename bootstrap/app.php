@@ -24,6 +24,14 @@ $app = new Laravel\Lumen\Application(
 );
 
  $app->withFacades();
+ //$app->configure('jwt'); 
+ //$app->configure('auth');
+ $app->configure('excel');
+
+
+if (!class_exists('Config')) {
+    class_alias('Illuminate\Support\Facades\Config', 'Config');
+}
 
 if (!class_exists('Response')) {
     class_alias('Illuminate\Support\Facades\Response','Response');
@@ -91,6 +99,8 @@ $app->routeMiddleware([
 
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
+
+$app->register('Maatwebsite\Excel\ExcelServiceProvider');
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
