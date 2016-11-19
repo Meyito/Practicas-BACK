@@ -26,8 +26,6 @@ class DevelopmentPlanRepository extends EloquentRepository {
 
             try {
                 $parsedRow = $this->parseRow($row, $id);
-                
-                //$this->create($parsedRow);
             } catch (TransactionException $exc) {
                 $row = $key + 1;
                 $errorsArray["Fila {$row}"] = $exc->getErrorsArray();
@@ -48,14 +46,14 @@ class DevelopmentPlanRepository extends EloquentRepository {
     private function parseRow($row, $id) {
         $this->errors = [];
 
-        $dimention; $axe; $program; $subprogram; $goal;
+        $dimention = null; $axe = null; $program = null; $subprogram = null; $goal = null;
 
         $dimention = $this->getResult($row['cod_d'], $row['dimension'], $id,
                      \App\Models\Dimention::class, 'dimension', 'development_plan_id');
         
         if( !is_null($dimention) ){
             $axe = $this->getResult($row['cod_e'], $row['eje'], $dimention -> id,
-                     \App\Models\Axe::class, 'eje', 'dimension_id');
+                     \App\Models\Axe::class, 'eje', 'dimention_id');
         }
 
         if( !is_null($axe) ){
@@ -80,10 +78,6 @@ class DevelopmentPlanRepository extends EloquentRepository {
             throw new TransactionException($this->errors,
             "Se encontraron errores en la linea");
         }
-
-        /*if (empty($response['specialties']) && empty($response['lines']) && empty($response['systems'])) {
-            throw new Exception("No se han agregado sistemas al producto");
-        }*/
 
         return $response;
     }

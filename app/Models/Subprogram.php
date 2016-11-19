@@ -38,4 +38,8 @@ class Subprogram extends BaseModel {
         return $this->belongsTo(Program::class);
     }
 
+    function goals(){
+        return $this->hasMany(Goal::class);
+    }
+
 }
