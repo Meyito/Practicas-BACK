@@ -34,8 +34,12 @@ class Dimention extends BaseModel {
         "name.required" => "El nombre es requerido",
     ];
 
-    function identification_type(){
+    function development_plan(){
         return $this->belongsTo(DevelopmentPlan::class);
+    }
+
+    function axes(){
+        return $this->hasMany(Axe::class);
     }
 
 }

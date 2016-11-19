@@ -15,7 +15,6 @@ class DevelopmentPlan extends BaseModel {
 
     protected $fillable = [
         "name",
-        "slogan",
         "init_year",
         "end_year"
     ];
@@ -31,4 +30,8 @@ class DevelopmentPlan extends BaseModel {
         "init_year.required" => "El año de inicio es requerido",
         "end_year.required" => "El año de fin es requerido",
     ];
+
+    function dimentions(){
+        return $this->hasMany(Dimention::class);
+    }
 }

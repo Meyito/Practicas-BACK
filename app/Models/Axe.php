@@ -15,7 +15,7 @@ class Axe extends BaseModel {
     protected $fillable = [
         "code",
         "name",
-        "dimension_id",
+        "dimention_id",
         "created_by"
     ];
 
@@ -26,18 +26,22 @@ class Axe extends BaseModel {
     protected static $rules = [
         'code' => 'required',
         'name' => 'required',
-        'dimension_id' => 'required|exists:dimentions,id'
+        'dimention_id' => 'required|exists:dimentions,id'
     ];
 
     protected $messages = [
-        "dimension_id.required" => "La dimensión es requerida",
-        "dimension_id.exists" => "La dimensión es inválida",
+        "dimention_id.required" => "La dimensión es requerida",
+        "dimention_id.exists" => "La dimensión es inválida",
         "code.required" => "El número de identificación es requerido",
         "name.required" => "El nombre es requerido",
     ];
 
     function dimention(){
         return $this->belongsTo(Dimention::class);
+    }
+
+    function programs(){
+        return $this->hasMany(Program::class);
     }
 
 }

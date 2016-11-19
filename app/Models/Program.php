@@ -38,4 +38,12 @@ class Program extends BaseModel {
         return $this->belongsTo(Axe::class);
     }
 
+    function subprograms(){
+        return $this->hasMany(Subprogram::class);
+    }
+
+    function goals(){
+        return $this->hasManyThrough(Goal::class, Subprogram::class);
+    }
+
 }

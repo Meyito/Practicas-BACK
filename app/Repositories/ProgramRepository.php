@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use DB;
 /**
  * Description of ProgramRepository
  *

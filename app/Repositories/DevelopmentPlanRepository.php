@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Repositories;
+use DB;
+use App\Exceptions\TransactionException;
+use Exception;
+
 
 /**
  * Description of DevelopmentPlanRepository
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class DevelopmentPlanRepository extends EloquentRepository {
 
@@ -22,8 +26,6 @@ class DevelopmentPlanRepository extends EloquentRepository {
 
             try {
                 $parsedRow = $this->parseRow($row, $id);
-                
-                //$this->create($parsedRow);
             } catch (TransactionException $exc) {
                 $row = $key + 1;
                 $errorsArray["Fila {$row}"] = $exc->getErrorsArray();
@@ -44,47 +46,56 @@ class DevelopmentPlanRepository extends EloquentRepository {
     private function parseRow($row, $id) {
         $this->errors = [];
 
-        $response = [
-            "dimention_id" => $this->getResult($row['cod_d'], $row['dimension'], $id,
-                     \App\Models\Dimention::class, 'dimension', 'development_plan_id') -> id
-            /*"name" => $row['dimension'],
-            "brand" => $row['marca'],
-            "distribution" => $row['distribucion'],
-            "tax_type_id" => $this->getResult($row['grupo_contable'],
-                    \App\Models\TaxType::class, 'grupo contable')->id,
-            "invima" => $row['invima'],
-            "product_type_id" => $this->getResult($row['tipo_producto'],
-                    \App\Models\ProductType::class, 'tipo de producto')->id,
-            "specialties" => $this->getResults($row['especialidades'],
-                    \App\Models\Specialty::class, 'especialidad'),
-            "lines" => $this->getResults($row['lineas'],
-                    \App\Models\Line::class, 'linea'),
-            "systems" => $this->getResults($row['sistemas'],
-                    \App\Models\System::class, 'sistema'),
-            "min_stock" => $row['stock_minimo']*/
-        ];
+        $dimention = null; $axe = null; $program = null; $subprogram = null; $goal = null;
+
+        $dimention = $this->getResult($row['cod_d'], $row['dimension'], $id,
+                     \App\Models\Dimention::class, 'dimension', 'development_plan_id');
+        
+        if( !is_null($dimention) ){
+            $axe = $this->getResult($row['cod_e'], $row['eje'], $dimention -> id,
+                     \App\Models\Axe::class, 'eje', 'dimention_id');
+        }
+
+        if( !is_null($axe) ){
+            $program = $this->getResult($row['cod_p'], $row['programa'], $axe -> id,
+                     \App\Models\Program::class, 'programa', 'axe_id');
+        }
+
+        if( !is_null($program) ){
+            $subprogram = $this->getResult($row['cod_s'], $row['subprograma'], $program -> id,
+                     \App\Models\Subprogram::class, 'subprograma', 'program_id');
+        }
+
+        if( !is_null($subprogram) ){
+            $goal = $this->getResult($row['cod_m'], $row['meta'], $subprogram -> id,
+                     \App\Models\Goal::class, 'meta', 'subprogram_id');
+        }
+        
+
+        $response = [];
 
         if (!empty($this->errors)) {
             throw new TransactionException($this->errors,
             "Se encontraron errores en la linea");
         }
 
-        /*if (empty($response['specialties']) && empty($response['lines']) && empty($response['systems'])) {
-            throw new Exception("No se han agregado sistemas al producto");
-        }*/
-
         return $response;
     }
 
     private function getResult($code, $name, $foreign, $modelClass, $string, $foreignColumn, $column = 'code' ){
+        if( is_null($foreign) ){
+            $this->errors[] = "No se suministró el {$foreignColumn}";
+            return null;
+        }
+        
         if (!$code) {
             $this->errors[] = "No se suministró el código de {$string}";
-            return;
+            return null;
         }
 
         if (!$name) {
             $this->errors[] = "No se suministró {$string}";
-            return;
+            return null;
         }
 
         $model = $modelClass::where([
@@ -99,7 +110,7 @@ class DevelopmentPlanRepository extends EloquentRepository {
 
             if(!$model){
                 $this->errors[] = "Ocurrió un error al guardar " . "{$string}";
-                return;
+                return null;
             }
         }
 

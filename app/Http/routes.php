@@ -36,23 +36,25 @@ $app->get('/key', function () {
 });
 
 $app->group([
-    'namespace' => '\App\Http\Controllers\V1',
     'middleware' => 'preflight',
     'prefix' => 'api/v1'], 
     function () use ($app) {
         $app->post('authenticate', 'AuthenticationController@authenticate');
+        $app->get('/test', function () use ($app) {
+            return "Welcome to Meyito Backend  :c :3";
+        });
 });
 
 $app->group([
     'prefix' => 'api/v1',
     'middleware' => [
         'preflight',
-        'jwt-auth'
+        //'jwt-auth'
     ],
-    'namespace' => 'App\Http\Controllers\V1'
 ],
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
+        $app->get("axes", "AxeController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');

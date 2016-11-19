@@ -16,6 +16,11 @@ class UpdateAxesTable extends Migration
         Schema::table('axes', function (Blueprint $table) {
             $table->dropForeign('axes_created_by_foreign');
             $table->dropColumn('created_by');
+            $table->dropForeign('axes_dimension_id_foreign');
+            $table->dropColumn('dimension_id');
+            $table->integer('dimention_id')->unsigned();
+
+            $table->foreign('dimention_id')->references('id')->on('dimentions');
         });
     }
 
