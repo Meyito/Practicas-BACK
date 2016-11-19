@@ -15,7 +15,8 @@ class Project extends BaseModel {
         "code",
         "name",
         "description",
-        "subprogram_id"
+        "subprogram_id",
+        "status"
     ];
 
     protected $hidden = [
@@ -23,7 +24,7 @@ class Project extends BaseModel {
     ];
 
     protected static $rules = [
-        'code' => 'required',
+        'code' => 'required|unique:projects,code,:ID',
         'name' => 'required',
         'subprogram_id' => 'required|exists:subprograms,id'
     ];
@@ -31,6 +32,7 @@ class Project extends BaseModel {
     protected $messages = [
         "subprogram_id.required" => "El subprograma es requerido",
         "subprogram_id.exists" => "El subprograma es inválido",
+        "code.unique" => "Ya existe un proyecto con el código suministrado",
         "code.required" => "El código es requerido",
         "name.required" => "El nombre es requerido",
     ];

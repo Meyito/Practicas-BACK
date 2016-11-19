@@ -117,30 +117,4 @@ class DevelopmentPlanRepository extends EloquentRepository {
         return $model;
     }
 
-    /*public function create($data) {
-        DB::connection('central')->beginTransaction();
-        $product = new Product($data);
-        if (!$product->save()) {
-            throw new TransactionException($product->getErrors(),
-            "Ocurrió un error en la creación del Producto");
-        }
-
-        if (!isset($data['product_systems'])) {
-            DB::connection('central')->commit();
-            return $product;
-        }
-
-        try {
-            $product->product_systems()->attach($data['product_systems']);
-            DB::connection('central')->commit();
-            return $product;
-        } catch (Exception $exc) {
-            DB::connection('central')->rollBack();
-            throw new TransactionException($exc->getMessage(),
-            "Ocurrió un error en la creación del Producto");
-        }
-    }*/
-
-
-
 }
