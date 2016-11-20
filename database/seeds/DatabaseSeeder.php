@@ -17,6 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->command->info('secretaries table seeded!');
         $this->call('GenderSeeder');
         $this->command->info('genders table seeded!');
+        $this->call('SpecialConditionSeeder');
+        $this->command->info('special conditions table seeded!');
+        $this->call('EthnicGroupsSeeder');
+        $this->command->info('ethnic groups table seeded!');
 
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();

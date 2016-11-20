@@ -22,9 +22,25 @@ class IdentificationTypeSeeder
                 "abbreviation" => "CE"
             ],
             [
-                "name" => "Nit",
-                "abbreviation" => "NIT"
-            ]
+                "name" => "PA",
+                "abbreviation" => "PA"
+            ],
+            [
+                "name" => "Número Único de Identificación",
+                "abbreviation" => "NUI"
+            ],
+            [
+                "name" => "Registro Civil",
+                "abbreviation" => "RC"
+            ],
+            [
+                "name" => "Tarjeta de Identidad",
+                "abbreviation" => "TI"
+            ],
+            [
+                "name" => "SD",
+                "abbreviation" => "SD"
+            ],
         ];
 
         DB::table('identification_types')->insert($identificationTypes);
