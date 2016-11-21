@@ -27,6 +27,20 @@ class DatabaseSeeder extends Seeder
         $this->command->info('motor disabilities table seeded!');
         $this->call('HearingSeeder');
         $this->command->info('hearing impairments table seeded!');
+        $this->call('AgeRangeSeeder');
+        $this->command->info('age range table seeded!');
+        $this->call('VictimTypesSeeder');
+        $this->command->info('victim types table seeded!');
+        $this->call('DepartmentsSeeder');
+        $this->command->info('departments table seeded!');
+        $this->call('ZoneSeeder');
+        $this->command->info('zones table seeded!');
+        $this->call('SisbenZonesSeeder');
+        $this->command->info('sisben zones table seeded!');
+        $this->call('AdminUnitTypeSeeder');
+        $this->command->info('administrative unit types table seeded!');
+        $this->call('AreaTypesSeeder');
+        $this->command->info('area types table seeded!');
 
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();
