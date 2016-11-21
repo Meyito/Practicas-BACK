@@ -85,6 +85,7 @@ class ProjectController extends Controller {
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         ];
 
+        print_r($file);
         if (!in_array($file->getMimeType(), $validFileTypes)) {
             return false;
         }
