@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class VisualImpairment extends BaseModel {
 
     protected $fillable = [
-        "name"
+        "name",
+        "abbreviation"
     ];
 
     protected $hidden = [
@@ -22,6 +23,7 @@ class VisualImpairment extends BaseModel {
 
     protected static $rules = [
         'name' => 'required|unique:visual_impairments,name,:ID',
+        'abbreviation' => 'required|unique:visual_impairments,abbreviation,:ID',
     ];
 
     protected $messages = [

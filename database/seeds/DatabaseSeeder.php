@@ -21,6 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->command->info('special conditions table seeded!');
         $this->call('EthnicGroupsSeeder');
         $this->command->info('ethnic groups table seeded!');
+        $this->call('VisualSeeder');
+        $this->command->info('visual impairments table seeded!');
+        $this->call('MotorSeeder');
+        $this->command->info('motor disabilities table seeded!');
+        $this->call('HearingSeeder');
+        $this->command->info('hearing impairments table seeded!');
 
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();

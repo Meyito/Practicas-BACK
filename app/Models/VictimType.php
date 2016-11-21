@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class VictimType extends BaseModel {
 
     protected $fillable = [
-        "name"
+        "name",
+        "abbreviation"
     ];
 
     protected $hidden = [
@@ -22,6 +23,7 @@ class VictimType extends BaseModel {
 
     protected static $rules = [
         'name' => 'required|unique:victim_types,name,:ID',
+        'abbreviation' => 'required|unique:victim_types,abbreviation,:ID',
     ];
 
     protected $messages = [

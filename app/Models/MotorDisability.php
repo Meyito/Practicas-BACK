@@ -15,7 +15,8 @@ class MotorDisability extends BaseModel {
     protected $table = "motor_disabilities";
 
     protected $fillable = [
-        "name"
+        "name",
+        "abbreviation"
     ];
 
     protected $hidden = [
@@ -24,6 +25,7 @@ class MotorDisability extends BaseModel {
 
     protected static $rules = [
         'name' => 'required|unique:motor_disabilities,name,:ID',
+        'abbreviation' => 'required|unique:motor_disabilities,abbreviation,:ID',
     ];
 
     protected $messages = [
