@@ -30,7 +30,7 @@ class ProjectRepository extends EloquentRepository {
 
             try {
                 $parsedRow = $this->parseRow($row);
-                $this->create($parsedRow);
+                $this->save($parsedRow);
             } catch (TransactionException $exc) {
                 $row = $key + 1;
                 $errorsArray["Fila {$row}"] = $exc->getErrorsArray();
@@ -125,7 +125,7 @@ class ProjectRepository extends EloquentRepository {
         return $subprogram->id;
     }
 
-    public function create($data) {
+    public function save($data) {
         $project = new Project($data);
         
         if (!$project->save()) {

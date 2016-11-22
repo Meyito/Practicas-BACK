@@ -60,6 +60,7 @@ $app->group([
         $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");
         $app->post("areas/upload", "AreaController@uploadAreas");
         $app->post("administrative-units/upload", "AdministrativeUnitController@uploadUnits");
+        $app->post("activities/upload", "ActivityController@uploadActivity");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');

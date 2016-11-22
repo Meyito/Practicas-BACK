@@ -8,6 +8,7 @@ use App\Helpers\UserHelper;
 use App\Models\Activity;
 use App\Repositories\ActivityRepository as ActivityRepo;
 use Illuminate\Http\Response as IlluminateResponse;
+use Excel;
 
 class ActivityController extends Controller {
 
@@ -39,6 +40,59 @@ class ActivityController extends Controller {
 
         return response()->json($activity->getErrors(),
             IlluminateResponse::HTTP_BAD_REQUEST);
+    }
+
+    public function uploadActivity(Request $request){
+        $file = $this->getFile($request);
+
+        try {
+            $reader = Excel::selectSheetsByIndex(0)->load($file->getRealPath(),
+                        null, null, true);
+
+            $results = $this->activity->bulkStore( $reader->toArray() );
+
+            if ($results === true) {
+                /*CARGAR LOS ASISTENTES
+                Si todo bien -> exito
+                Si no, eliminar la actividad y mostrar los errores
+                */
+                return response()->json(['msg' => 'Se cargo la actividad exitosamente.']);
+            } else {
+                return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
+            }
+        } catch (Exception $e) {
+            return response()->json(["error" => "Ocurrió un error inesperado en la carga del archivo."], IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+    }
+
+    private function getFile($request) {
+        if (!$request->hasFile('file')) {
+            return response()->json("Debe suministrar un archivo de actividades.",
+                IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        $file = $request->file('file');
+
+        if (!$this->isValid($file)) {
+            return response()->json(["error" => "No se cargó un archivo de excel válido."],
+                IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        return $file;
+    }
+
+    private function isValid($file) {
+        $validFileTypes = [
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        ];
+
+        if (!in_array($file->getMimeType(), $validFileTypes)) {
+            return false;
+        }
+
+        return true;
     }
 
 }
