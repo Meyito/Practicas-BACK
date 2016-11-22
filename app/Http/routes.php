@@ -58,6 +58,7 @@ $app->group([
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         $app->post("projects/upload", "ProjectController@uploadProjects");
         $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");
+        $app->post("areas/upload", "AreaController@uploadAreas");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');

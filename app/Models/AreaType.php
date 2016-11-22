@@ -22,8 +22,7 @@ class AreaType extends BaseModel {
     ];
 
     protected static $rules = [
-        'code' => 'required|unique:area_types,code,:ID',
-        'name' => 'required',
+        'code' => 'required|unique:area_types,code,:ID',        
         'sisben_zone_id' => 'required|exists:sisben_zones,id'
     ];
 
@@ -31,8 +30,7 @@ class AreaType extends BaseModel {
         "sisben_zone_id.required" => "La zona sisben es requerida",
         "sisben_zone_id.exists" => "La zona sisben es inválida",
         "code.required" => "El código es requerido",
-        "code.unique" => "Ya existe un tipo de area con el código suministrado",
-        "name.required" => "El nombre es requerido",
+        "code.unique" => "Ya existe un tipo de area con el código suministrado"
     ];
 
     function sisben_zone(){

@@ -29,7 +29,26 @@ class AdminUnitTypeSeeder
                 "name" => "Area Reserva",
                 "code" => 4,                
             ],
-
+            [
+                "name" => "Cabecera Municipal",
+                "code" => 5,                
+            ],
+            [
+                "name" => "Centro Poblado",
+                "code" => 6,                
+            ],
+            [
+                "name" => "Corregimiento",
+                "code" => 7,                
+            ],
+            [
+                "name" => "Diferendo",
+                "code" => 8,                
+            ],
+            [
+                "name" => "Resguardo",
+                "code" => 9,                
+            ],
         ];
 
         DB::table('administrative_unit_types')->insert($administrative_unit_types);
