@@ -34,20 +34,16 @@ class AdminUnitTypeSeeder
                 "code" => 5,                
             ],
             [
-                "name" => "Centro Poblado",
+                "name" => "Corregimiento",
                 "code" => 6,                
             ],
             [
-                "name" => "Corregimiento",
+                "name" => "Diferendo",
                 "code" => 7,                
             ],
             [
-                "name" => "Diferendo",
-                "code" => 8,                
-            ],
-            [
                 "name" => "Resguardo",
-                "code" => 9,                
+                "code" => 8,                
             ],
         ];
 
