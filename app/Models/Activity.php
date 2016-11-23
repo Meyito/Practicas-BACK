@@ -52,4 +52,8 @@ class Activity extends BaseModel {
         "goal_id.exists" => "La meta es inválida",
     ];
 
+    function assistants(){
+        return $this->belongsToMany('App\Models\Characterization', 'activity_characterizations', 'activity_id', 'characterization_id');
+    }
+
 }

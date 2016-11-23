@@ -22,7 +22,7 @@ class IdentificationTypeSeeder
                 "abbreviation" => "CE"
             ],
             [
-                "name" => "PA",
+                "name" => "PASAPORTE",
                 "abbreviation" => "PA"
             ],
             [
@@ -36,11 +36,7 @@ class IdentificationTypeSeeder
             [
                 "name" => "Tarjeta de Identidad",
                 "abbreviation" => "TI"
-            ],
-            [
-                "name" => "SD",
-                "abbreviation" => "SD"
-            ],
+            ]
         ];
 
         DB::table('identification_types')->insert($identificationTypes);

@@ -51,12 +51,22 @@ class ActivityController extends Controller {
 
             $results = $this->activity->bulkStore( $reader->toArray() );
 
-            if ($results === true) {
+            if ($results["success"] === true) {
+                $reader = Excel::selectSheetsByIndex(1)->load($file->getRealPath(),
+                        null, null, true);
+
+                $results = $this->activity->bulkAssistants( $reader->toArray(), $results["id"] );
+
+                if($results === true){
+                    return response()->json(['msg' => 'Se cargo la actividad exitosamente.']);
+                }else{
+                    return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
+                }
                 /*CARGAR LOS ASISTENTES
                 Si todo bien -> exito
                 Si no, eliminar la actividad y mostrar los errores
                 */
-                return response()->json(['msg' => 'Se cargo la actividad exitosamente.']);
+                
             } else {
                 return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
             }
