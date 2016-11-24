@@ -82,7 +82,7 @@ class DevelopmentPlanRepository extends EloquentRepository {
         return $response;
     }
 
-    private function getResult($code, $name, $foreign, $modelClass, $string, $foreignColumn, $column = 'code' ){
+    private function getResult( $code, $name, $foreign, $modelClass, $string, $foreignColumn ){
         if( is_null($foreign) ){
             $this->errors[] = "No se suministró el {$foreignColumn}";
             return null;

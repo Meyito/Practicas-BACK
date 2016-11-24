@@ -202,7 +202,7 @@ class ActivityRepository extends EloquentRepository {
             "age" => $row["edad"],
             "is_mentally_disabled" => $row["discapacidad_mental"],
             "age_range_id" => $this->parseAgeRange($row["edad"], \App\Models\AgeRange::class),
-            "gender_id" => $this->parseData($row["genero"], \App\Models\Gender::class, "name", "Genero"),
+            "gender_id" => $this->parseData($row["genero"], \App\Models\Gender::class, "abbreviation", "Genero"),
             "special_condition_id" => $this->parseData($row["condicion_especial"], \App\Models\SpecialCondition::class, "abbreviation", "Condición Especial"),
             "hearing_impairment_id" => $this->parseData($row["discapacidad_auditiva"], \App\Models\HearingImpairment::class, "abbreviation", "Discapacidad Auditiva"),
             "visual_impairment_id" => $this->parseData($row["discapacidad_visual"], \App\Models\VisualImpairment::class, "abbreviation", "Discapacidad Visual"),
