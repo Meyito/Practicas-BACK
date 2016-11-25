@@ -42,6 +42,24 @@ class ProjectController extends Controller {
             IlluminateResponse::HTTP_BAD_REQUEST);
     }
 
+    public function update(Request $request, $id) {
+        $data = $request->get('project');
+        $project = $this->project->find($id);
+
+        if (!$project) {
+            return response()->json(["error" => "No existe el proyecto suministrado"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $this->project->update($project, $data);
+            return response()->json($project);
+        } catch (TransactionException $exc) {
+            return response()->json($exc->getErrorsArray(),
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+    }
+
     public  function uploadProjects(Request $request){
 
         $file = $this->getFile($request);
@@ -85,7 +103,6 @@ class ProjectController extends Controller {
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         ];
 
-        print_r($file);
         if (!in_array($file->getMimeType(), $validFileTypes)) {
             return false;
         }
