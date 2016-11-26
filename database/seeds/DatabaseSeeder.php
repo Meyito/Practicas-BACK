@@ -41,6 +41,8 @@ class DatabaseSeeder extends Seeder
         $this->command->info('administrative unit types table seeded!');
         $this->call('AreaTypesSeeder');
         $this->command->info('area types table seeded!');
+        $this->call('CounterSeeder');
+        $this->command->info('counters table seeded!');
 
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();
