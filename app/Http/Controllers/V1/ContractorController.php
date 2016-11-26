@@ -59,4 +59,22 @@ class ContractorController extends Controller {
         }
     }
 
+    public function addContract(Request $request, $id){
+        $data = $request->all();
+        $contractor = $this->contractor->find($id);
+
+        if (!$contractor) {
+            return response()->json(["error" => "No existe el contratista suministrado"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $this->contractor->addContract($contractor, $data);
+            return response()->json($contractor);
+        } catch (TransactionException $exc) {
+            return response()->json($exc->getErrorsArray(),
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+    }
+
 }

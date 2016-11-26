@@ -62,6 +62,7 @@ $app->group([
         $app->post("administrative-units/upload", "AdministrativeUnitController@uploadUnits");
         $app->post("activities/upload", "ActivityController@uploadActivity");
         $app->get("identification-types", "IdentificationTypeController@index");
+        $app->post('contractors/{id}/contracts', "ContractorController@addContract");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');
