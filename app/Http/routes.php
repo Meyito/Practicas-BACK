@@ -61,6 +61,7 @@ $app->group([
         $app->post("areas/upload", "AreaController@uploadAreas");
         $app->post("administrative-units/upload", "AdministrativeUnitController@uploadUnits");
         $app->post("activities/upload", "ActivityController@uploadActivity");
+        $app->get("identification-types", "IdentificationTypeController@index");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');
@@ -74,9 +75,9 @@ $app->group([
         resource('motor-disabilities', 'MotorDisabilityController');
         resource('victim-types', 'VictimTypeController');
         resource('contractors', 'ContractorController');
+        resource('contracts', 'ContractController');
         resource('zones', 'ZoneController');
         resource('administrative-unit-types', 'AdministrativeUnitTypeController');
-        resource('contractor-periods', 'ContractorPeriodController');
         resource('programs', 'ProgramController');
         resource('subprograms', 'SubprogramController');
         resource('goals', 'GoalController');

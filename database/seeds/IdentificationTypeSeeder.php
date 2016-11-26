@@ -22,7 +22,7 @@ class IdentificationTypeSeeder
                 "abbreviation" => "CE"
             ],
             [
-                "name" => "PASAPORTE",
+                "name" => "Pasaporte",
                 "abbreviation" => "PA"
             ],
             [
