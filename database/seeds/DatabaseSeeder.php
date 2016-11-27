@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('area types table seeded!');
         $this->call('CounterSeeder');
         $this->command->info('counters table seeded!');
+        
 
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();
@@ -52,5 +53,11 @@ class DatabaseSeeder extends Seeder
     public function seedLocalEnvironment() {
         $this->call('UsersSeeder');
         $this->command->info('users table seeded!');
+        $this->call('ContractSeeder');
+        $this->command->info('contracts table seeded!');
+        $this->call('ContractorSeeder');
+        $this->command->info('contractors table seeded!');
+        $this->call('ContractorContractSeeder');
+        $this->command->info('contractor_contracts table seeded!');
     }
 }

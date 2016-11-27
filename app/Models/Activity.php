@@ -21,7 +21,9 @@ class Activity extends BaseModel {
         "rubro",
         "registro_pptal",
         "project_id",
-        "goal_id"
+        "goal_id",
+        "contractor_contract_id",
+        "administrative_unit_id"
     ];
 
     protected $hidden = [
@@ -36,6 +38,8 @@ class Activity extends BaseModel {
         'registro_pptal' => 'required',
         'project_id' => 'required|exists:projects,id',
         'goal_id' => 'required|exists:goals,id',
+        'contractor_contract_id' => 'required|exists:contractor_contracts,id',
+        'administrative_unit_id' => 'required|exists:administrative_units,id'
     ];
 
     protected $messages = [
@@ -50,6 +54,10 @@ class Activity extends BaseModel {
         "project_id.exists" => "El proyecto es inválida",
         "goal_id.required" => "La meta es requerida",
         "goal_id.exists" => "La meta es inválida",
+        "contractor_contract_id.required" => "El contrato/contratista es requerido",
+        "contractor_contract_id.exists" => "El contrato/contratista es inválido",
+        "administrative_unit_id.required" => "La localización es requerida",
+        "administrative_unit_id.exists" => "La localización es inválida",
     ];
 
     function assistants(){

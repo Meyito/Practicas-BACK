@@ -52,7 +52,7 @@ class AdministrativeUnitRepository extends EloquentRepository {
         $response = [
             "name" => $row['nombre'],
             "sisben_code" => $row['codigo_sisben'],
-            "area_id" => $this->parseArea( $row['codigo_municipio'], $row['codigo_zona_funcional'], \App\Models\Area::class),
+            "area_id" => $this->parseArea( $row['cod_municipio'], $row['cod_zona'], \App\Models\Area::class),
             "administrative_unit_type_id" => $this->parseData( $row['tipo'], \App\Models\AdministrativeUnitType::class,'code', 'Tipo de Unidad Administrativa' )
         ];
 

@@ -51,6 +51,9 @@ class ActivityRepository extends EloquentRepository {
     private function parseRow($row) {
         $this->errors = [];
 
+        $contract_id = $this->parseData( $row['contrato'], \App\Models\Contract::class, 'code', 'Contrato' );
+        $contractor_id = $this->parseData( $row['contratista'], \App\Models\Contractor::class, 'identification_number', 'Contratista' );
+
         $response = [
             "description" => $row['nombre_actividad'],
             "code" => $row['cod_actividad'],
@@ -59,7 +62,8 @@ class ActivityRepository extends EloquentRepository {
             "registro_pptal" => $row['registro_pptal'],
             "project_id" => $this->parseData( $row['cod_proyecto'], \App\Models\Project::class,'code', 'Proyecto' ),
             "goal_id" => $this->parseGoal( $row['cod_meta'], \App\Models\Goal::class),
-
+            "contractor_contract_id" => $this->parseContract($contract_id, $contractor_id),
+            "administrative_unit_id" => $this->parseLocation($row['localizacion'])
         ];
 
         if (!empty($this->errors)) {
@@ -68,6 +72,53 @@ class ActivityRepository extends EloquentRepository {
         }
 
         return $response;
+    }
+
+    private function parseLocation($code){
+        if( is_null($code) ){
+            $this->errors[] = "No se suministró el código de la Localización";
+            return null;
+        }
+
+        $codes = explode(".", $code);
+
+        if(count($codes) != 4){
+            $this->errors[] = "El código de la Localización es inválido";
+            return null;
+        }
+
+        $result = DB::select("SELECT au.id from administrative_units au
+            LEFT JOIN areas a ON a.id=au.area_id
+            LEFT JOIN area_types aty ON a.area_type_id=aty.id
+            LEFT JOIN municipalities m ON m.id=a.municipality_id
+            LEFT JOIN zones z ON z.id=m.zone_id
+            LEFT JOIN departments d ON d.id=z.department_id
+            LEFT JOIN sisben_zones sz ON sz.id= aty.sisben_zone_id
+            WHERE d.code = {$codes[0]}
+            AND m.code = {$codes[1]}
+            AND sz.code = {$codes[2]}
+            AND au.sisben_code={$codes[3]}");
+
+        if( !count($result) ){
+            $this->errors[] = "No se encontró ningúna localización con el código suministrado";
+            return null;
+        }
+
+
+        return $result[0]->id;
+    }
+
+    private function parseContract($contract_id, $contractor_id){
+        $result = DB::select("SELECT id FROM contractor_contracts 
+                WHERE contractor_id = {$contractor_id}
+                AND contract_id = {$contract_id}");
+
+        if( !count($result) ){
+            $this->errors[] = "El contratista asignado no tiene el contrato registrado";
+            return null;   
+        }
+
+        return $result[0]->id;
     }
 
     private function parseGoal($code, $modelClass){
