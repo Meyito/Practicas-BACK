@@ -13,16 +13,20 @@ class CounterSeeder extends Seeder {
 
         $counters = [
             [
-                "label" => "Personas",
-                "column" => "ch.person_id"
+                "label" => "Total Personas",
+                "column" => "COUNT( DISTINCT(p.id) )"
             ],
             [
-                "label" => "Corregimiento",
-                "column" => "ch.algo"
+                "label" => "Total Municipios",
+                "column" => "COUNT( DISTINCT(m.id) )"
             ],
             [
-                "label" => "Proyecto",
-                "column" => "p.id"
+                "label" => "Cuales Municipios",
+                "column" => "DISTINCT(m.name)"
+            ],
+            [
+                "label" => "Cuales Proyectos",
+                "column" => "DISTINCT(pj.name)"
             ]
         ];
 

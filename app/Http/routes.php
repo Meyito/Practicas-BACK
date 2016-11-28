@@ -55,6 +55,7 @@ $app->group([
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->get("axes", "AxeController@index");
+        $app->get("counters", "CounterController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         $app->post("projects/upload", "ProjectController@uploadProjects");
         $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");

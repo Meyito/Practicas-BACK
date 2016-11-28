@@ -11,25 +11,60 @@ class FilterSeeder extends Seeder {
      */
     public function run() {
 
-        $counters = [
+        $filters = [
             [
-                "label" => "Personas",
-                "column" => "ch.person_id",
-                "endpoint" => "projects"
+                "label" => "Género",
+                "column" => "g.id",
+                "endpoint" => "genders"
             ],
             [
-                "label" => "Corregimiento",
-                "column" => "ch.algo",
-                "endpoint" => ""
+                "label" => "Rango Edad",
+                "column" => "ar.id",
+                "endpoint" => "age_range"
             ],
             [
-                "label" => "Proyecto",
-                "column" => "p.id",
-                "endpoint" => ""
-            ]
+                "label" => "Condición Especial",
+                "column" => "sc.id",
+                "endpoint" => "special-conditions"
+            ],
+            [
+                "label" => "Discapacidad Auditiva",
+                "column" => "hi.id",
+                "endpoint" => "hearing-impairments"
+            ],
+            [
+                "label" => "Discapacidad Visual",
+                "column" => "vi.id",
+                "endpoint" => "visual-impairments"
+            ],
+            [
+                "label" => "Discapacidad Motriz",
+                "column" => "md.id",
+                "endpoint" => "motor-disabilities"
+            ],
+            [
+                "label" => "Tipo Víctima",
+                "column" => "vt.id",
+                "endpoint" => "victim-types"
+            ],
+            [
+                "label" => "Grupo Etnico",
+                "column" => "eg.id",
+                "endpoint" => "ethnic-groups"
+            ],
+            [
+                "label" => "Madre Cabeza de Hogar",
+                "column" => "ch.is_mother_head",
+                "endpoint" => "NA"
+            ],
+            [
+                "label" => "Discapacidad Mental",
+                "column" => "ch.is_mentally_disabled",
+                "endpoint" => "NA"
+            ],
         ];
 
-        DB::table('counters')->insert($counters);
+        DB::table('filters')->insert($filters);
     }
 
 }

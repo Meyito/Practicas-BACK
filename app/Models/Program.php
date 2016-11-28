@@ -46,4 +46,8 @@ class Program extends BaseModel {
         return $this->hasManyThrough(Goal::class, Subprogram::class);
     }
 
+    function secretaries(){
+        return $this->belongsToMany('App\Models\secretaries', 'secretary_programs', 'program_id', 'secretary_id');
+    }
+
 }

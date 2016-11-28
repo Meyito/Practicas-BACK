@@ -43,6 +43,10 @@ class DatabaseSeeder extends Seeder
         $this->command->info('area types table seeded!');
         $this->call('CounterSeeder');
         $this->command->info('counters table seeded!');
+        $this->call('FilterSeeder');
+        $this->command->info('filters table seeded!');
+        $this->call('CounterFilterSeeder');
+        $this->command->info('counter_filters table seeded!');
         
 
         if (app()->environment('local')) {
