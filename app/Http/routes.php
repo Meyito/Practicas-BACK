@@ -56,6 +56,7 @@ $app->group([
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->get("axes", "AxeController@index");
         $app->get("counters", "CounterController@index");
+        $app->get("generic-filters", "GenericFilterController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         $app->post("projects/upload", "ProjectController@uploadProjects");
         $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");
@@ -63,13 +64,15 @@ $app->group([
         $app->post("administrative-units/upload", "AdministrativeUnitController@uploadUnits");
         $app->post("activities/upload", "ActivityController@uploadActivity");
         $app->get("identification-types", "IdentificationTypeController@index");
+        $app->get("age-range", "AgeRangeController@index");
+        $app->post("activities/lite", "ActivityController@filterActivities");
         $app->post('contractors/{id}/contracts', "ContractorController@addContract");
+        $app->post("reports", "ReportController@report");
         resource("dimentions", "DimentionController");
         resource('people', 'PersonController');
         resource('secretaries', 'SecretaryController');
         resource('ethnic-groups', 'EthnicGroupController');
         resource('genders', 'GenderController');
-        resource('age-range', 'AgeRangeController');
         resource('special-conditions', 'SpecialConditionController');
         resource('visual-impairments', 'VisualImpairmentController');
         resource('hearing-impairments', 'HearingImpairmentController');

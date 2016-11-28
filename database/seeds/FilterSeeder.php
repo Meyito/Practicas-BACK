@@ -20,7 +20,7 @@ class FilterSeeder extends Seeder {
             [
                 "label" => "Rango Edad",
                 "column" => "ar.id",
-                "endpoint" => "age_range"
+                "endpoint" => "age-range"
             ],
             [
                 "label" => "Condición Especial",

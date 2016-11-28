@@ -14,19 +14,23 @@ class CounterSeeder extends Seeder {
         $counters = [
             [
                 "label" => "Total Personas",
-                "column" => "COUNT( DISTINCT(p.id) )"
+                "column" => "COUNT( DISTINCT(p.id) ) AS total",
+                "response" => "El total de personas atendidas "
             ],
             [
                 "label" => "Total Municipios",
-                "column" => "COUNT( DISTINCT(m.id) )"
+                "column" => "COUNT( DISTINCT(m.id) ) AS total",
+                "response" => "El total de municipios donde se atendieron personas" 
             ],
             [
                 "label" => "Cuales Municipios",
-                "column" => "DISTINCT(m.name)"
+                "column" => "DISTINCT(m.name) AS municipios",
+                "response" => "Los municipios en los que se atendieron personas "
             ],
             [
                 "label" => "Cuales Proyectos",
-                "column" => "DISTINCT(pj.name)"
+                "column" => "DISTINCT(pj.name) AS proyectos",
+                "response" => "Los proyectos en los que se atendieron personas "
             ]
         ];
 

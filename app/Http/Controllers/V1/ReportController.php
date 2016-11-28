@@ -12,8 +12,7 @@ use DB;
 
 class ReportController extends Controller {
 
-    public function test(Request $request){
-        
+    public function report(Request $request){
         $total = $request->get('total');
         $filters = $request->get('filters');
         $conditions = $this->getConditions($filters);
@@ -22,7 +21,8 @@ class ReportController extends Controller {
             Total de personas: COUNT( DISTINCT(p.id) )
             En que municipios: DISTINCT(m.name)
         */
-        $result = DB::select("SELECT COUNT( DISTINCT({$total}) ) 
+
+        $result = DB::select("SELECT {$total}
                 FROM activity_characterizations ac
                 LEFT JOIN characterizations ch ON ch.id = ac.characterization_id
                 LEFT JOIN people p ON p.id = ch.person_id
@@ -37,7 +37,7 @@ class ReportController extends Controller {
                 LEFT JOIN activities a ON a.id = ac.activity_id
                 LEFT JOIN goals go ON go.id = a.goal_id
                 LEFT JOIN projects pj ON pj.id = a.project_id
-                LEFT JOIN subprograms sp ON sp.id = go.subprogram_id  ANd sp.id = pj.subprogram_id
+                LEFT JOIN subprograms sp ON sp.id = go.subprogram_id
                 LEFT JOIN programs pg ON pg.id = sp.program_id
                 LEFT JOIN axes ax ON ax.id = pg.axe_id
                 LEFT JOIN dimentions dm ON dm.id = ax.dimention_id
@@ -50,6 +50,8 @@ class ReportController extends Controller {
                 LEFT JOIN sisben_zones sz ON sz.id = aty.sisben_zone_id
                 LEFT JOIN municipalities m ON m.id = are.municipality_id
                 WHERE {$conditions}");
+        
+        return response()->json($result);
     }
 
     private function getConditions($filters){
@@ -59,7 +61,7 @@ class ReportController extends Controller {
             if($i > 0){
                 $sql.="AND ";
             }
-            $sql.=" {$filter['column']} = {$filter['value']} ";
+            $sql.=" {$filters[$i]['column']} = {$filters[$i]['value']} ";
         }
 
         return $sql;

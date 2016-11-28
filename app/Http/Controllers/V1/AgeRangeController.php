@@ -27,18 +27,4 @@ class AgeRangeController extends Controller {
         $options = $request->all() ?: [];
         return response()->json($this->age_range->get($options));
     }
-
-    public function store(Request $request) {
-        $data = $request->all();
-
-        $age_range = new AgeRange($data);
-
-        if ($this->age_range->create($age_range)) {
-            return response()->json($age_range);
-        }
-
-        return response()->json($age_range->getErrors(),
-            IlluminateResponse::HTTP_BAD_REQUEST);
-    }
-
 }

@@ -9,6 +9,7 @@ use App\Models\Activity;
 use App\Repositories\ActivityRepository as ActivityRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 use Excel;
+use DB;
 
 class ActivityController extends Controller {
 
@@ -103,6 +104,43 @@ class ActivityController extends Controller {
         }
 
         return true;
+    }
+
+    public function filterActivities(Request $request){
+        $filters = $request->get('filters');
+        $conditions = $this->getConditions($filters);
+
+        $result = DB::select("SELECT a.id, a.date, a.code, c.first_name, c.last_name, 
+                sp.name, COUNT(DISTINCT(p.id)) AS total
+                FROM activity_characterizations ac
+                LEFT JOIN activities a ON a.id = ac.activity_id
+                LEFT JOIN goals go ON go.id = a.goal_id
+                LEFT JOIN projects pj ON pj.id = a.project_id
+                LEFT JOIN subprograms sp ON sp.id = go.subprogram_id
+                LEFT JOIN programs pg ON pg.id = sp.program_id
+                LEFT JOIN axes ax ON ax.id = pg.axe_id
+                LEFT JOIN dimentions dm ON dm.id = ax.dimention_id
+                LEFT JOIN development_plans dp ON dp.id = dm.development_plan_id
+                LEFT JOIN secretary_programs spg ON spg.program_id = pg.id
+                LEFT JOIN secretaries se ON se.id = spg.secretary_id
+                LEFT JOIN contractor_contracts cc ON cc.id = a.contractor_contract_id
+                LEFT JOIN contractors c ON c.id = cc.contractor_id
+                LEFT JOIN characterizations ch ON ch.id = ac.characterization_id
+                LEFT JOIN people p ON p.id = ch.person_id
+                WHERE TRUE {$conditions}
+                GROUP BY a.id");
+        
+        return response()->json($result);
+    }
+
+    private function getConditions($filters){
+        $sql = "";
+
+        for($i = 0; $i < count($filters); $i++){
+            $sql.=" AND {$filters[$i]['column']} = {$filters[$i]['value']} ";
+        }
+
+        return $sql;
     }
 
 }
