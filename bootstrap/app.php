@@ -78,6 +78,7 @@ $app->singleton(
 $app->middleware([
     //App\Http\Middleware\ExampleMiddleware::class
     App\Http\Middleware\Preflight::class,
+    palanik\lumen\Middleware\LumenCors::class
  ]);
 
 $app->routeMiddleware([
