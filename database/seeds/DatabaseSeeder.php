@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('database\seeds\IdentificationTypeSeeder');
+        $this->call('IdentificationTypeSeeder');
         $this->command->info('identification types table seeded!');
         /*$this->call('SecretariesSeeder');
         $this->command->info('secretaries table seeded!');
