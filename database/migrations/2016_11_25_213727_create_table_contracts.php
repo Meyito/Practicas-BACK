@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContractorXPeriodsTable extends Migration
+class CreateTableContracts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateContractorXPeriodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contractor_periods', function (Blueprint $table) {
+        Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('contractor_id')->unsigned();
-            $table->integer('contract_code')->unsigned();
+            $table->integer('code')->unique();
             $table->date('init_date');
             $table->date('end_date');
             $table->timestamps();
-
-            $table->foreign('contractor_id')
-                ->references('id')
-                ->on('contractors');
         });
     }
 
@@ -34,6 +29,8 @@ class CreateContractorXPeriodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contractor_periods');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('contracts');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

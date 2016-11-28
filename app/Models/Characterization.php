@@ -74,4 +74,7 @@ class Characterization extends BaseModel {
         "ethnic_group_id.exists" => "El grupo etnico es inválido"
     ];
 
+    function activities(){
+        return $this->belongsToMany('App\Models\Activity', 'activity_characterizations', 'characterization_id', 'activity_id');
+    }
 }

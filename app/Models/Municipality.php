@@ -27,7 +27,7 @@ class Municipality extends BaseModel {
     protected static $rules = [
         'name' => 'required',
         'code' => 'required|unique:municipalities,code,:ID',
-        'zone_id' => 'required|exists:sisben_zones,id'
+        'zone_id' => 'required|exists:zones,id'
     ];
 
     protected $messages = [

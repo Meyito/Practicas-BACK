@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class EthnicGroup extends BaseModel {    
 
     protected $fillable = [
-        "name"
+        "name",
+        "abbreviation"
     ];
 
     protected $hidden = [

@@ -22,8 +22,20 @@ class IdentificationTypeSeeder
                 "abbreviation" => "CE"
             ],
             [
-                "name" => "Nit",
-                "abbreviation" => "NIT"
+                "name" => "Pasaporte",
+                "abbreviation" => "PA"
+            ],
+            [
+                "name" => "Número Único de Identificación",
+                "abbreviation" => "NUI"
+            ],
+            [
+                "name" => "Registro Civil",
+                "abbreviation" => "RC"
+            ],
+            [
+                "name" => "Tarjeta de Identidad",
+                "abbreviation" => "TI"
             ]
         ];
 

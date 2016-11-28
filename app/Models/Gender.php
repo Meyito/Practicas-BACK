@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class Gender extends BaseModel {
 
     protected $fillable = [
-        "name"
+        "name",
+        "abbreviation"
     ];
 
     protected $hidden = [
@@ -22,11 +23,14 @@ class Gender extends BaseModel {
 
     protected static $rules = [
         'name' => 'required|unique:genders,name,:ID',
+        'abbreviation' => 'required|unique:genders,abbreviation,:ID',
     ];
 
     protected $messages = [
         "name.required" => "El nombre es requerido",
-        "name.unique" => "Ya existe un género con el nombre suministrado"
+        "name.unique" => "Ya existe un género con el nombre suministrado",
+        "abbreviation.required" => "La abreviación es requerida",
+        "abbreviation.unique" => "Ya existe un género con la abreviación suministrada"
     ];
 
 }

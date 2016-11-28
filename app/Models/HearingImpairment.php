@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class HearingImpairment extends BaseModel {
 
     protected $fillable = [
-        "name"
+        "name",
+        "abbreviation"
     ];
 
     protected $hidden = [
@@ -21,7 +22,8 @@ class HearingImpairment extends BaseModel {
     ];
 
     protected static $rules = [
-        'name' => 'required|unique:hearing_impairments,name,:ID'
+        'name' => 'required|unique:hearing_impairments,name,:ID',
+        'abbreviation' => 'required|unique:hearing_impairments,abbreviation,:ID'
     ];
 
     protected $messages = [

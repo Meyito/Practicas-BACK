@@ -15,12 +15,15 @@ class GenderSeeder
         $genders = [
             [
                 "name" => "Femenino",
+                "abbreviation" => "F"
             ],
             [
                 "name" => "Masculino",
+                "abbreviation" => "M"
             ],
             [
                 "name" => "LGBT",
+                "abbreviation" => "L"
             ]
         ];
 

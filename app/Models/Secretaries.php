@@ -30,4 +30,8 @@ class Secretaries extends BaseModel {
         "name.required" => "El nombre es requerido",
     ];
 
+    function programs(){
+        return $this->belongsToMany('App\Models\Programs', 'secretary_programs', 'secretary_id', 'program_id');
+    }
+
 }

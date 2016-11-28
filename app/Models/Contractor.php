@@ -43,4 +43,8 @@ class Contractor extends BaseModel {
         return $this->belongsTo(IdentificationType::class);
     }
 
+    function contracts(){
+        return $this->belongsToMany(Contract::class, 'contractor_contracts', 'contractor_id', 'contract_id');
+    }
+
 }

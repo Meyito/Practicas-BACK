@@ -15,8 +15,7 @@ class Person extends BaseModel {
 
     protected $fillable = [
         "identification_type_id",
-        "identification_number",
-        "user_id"
+        "identification_number"
     ];
 
     protected $hidden = [
