@@ -14,10 +14,11 @@ class CreateAdministrativeUnitTypesTable extends Migration
     public function up()
     {
         Schema::create('administrative_unit_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('code')->unsigned()->unique();
+            $table->integer('id')->unsigned()->unique();
             $table->string('name');
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 

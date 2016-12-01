@@ -15,9 +15,9 @@ class CreateAdministrativeUnitsTable extends Migration
     {
         Schema::create('administrative_units', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('code')->unique();
+            $table->integer('code');
             $table->string('name');
-            $table->integer('sisben_code')->unique();
+            $table->integer('sisben_code');
             $table->integer('area_id')->unsigned();
             $table->integer('administrative_unit_type_id')->unsigned();
             $table->timestamps();

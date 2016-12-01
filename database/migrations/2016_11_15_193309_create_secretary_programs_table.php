@@ -24,6 +24,8 @@ class CreateSecretaryProgramsTable extends Migration
             $table->foreign('secretary_id')
             ->references('id')
             ->on('secretaries');
+
+            $table->primary(array('program_id', 'secretary_id'));
         });
     }
 

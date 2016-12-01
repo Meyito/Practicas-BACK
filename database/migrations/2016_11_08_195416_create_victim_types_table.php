@@ -16,6 +16,7 @@ class CreateVictimTypesTable extends Migration
         Schema::create('victim_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('abbreviation');
             $table->timestamps();
         });
     }

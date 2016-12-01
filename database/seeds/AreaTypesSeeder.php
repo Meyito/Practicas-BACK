@@ -15,37 +15,37 @@ class AreaTypesSeeder
         $area_types = [
             [
                 "name" => "Corregimiento",
-                "code" => 1,
+                "id" => 1,
                 "sisben_zone_id" => 2                
             ],
             [
                 "name" => "Unidad Funcional",
-                "code" => 2, 
+                "id" => 2, 
                 "sisben_zone_id" => 2               
             ],
             [
                 "name" => "Resguardo",
-                "code" => 3,
+                "id" => 3,
                 "sisben_zone_id" => 2                
             ],
             [
                 "name" => "Zona",
-                "code" => 4, 
+                "id" => 4, 
                 "sisben_zone_id" => 2               
             ],
             [
                 "name" => "Rural Disperso",
-                "code" => 5, 
+                "id" => 5, 
                 "sisben_zone_id" => 2               
             ],
             [
                 "name" => "Comuna",
-                "code" => 6, 
+                "id" => 6, 
                 "sisben_zone_id" => 1               
             ],
             [
                 "name" => "Cabecera Municipal",
-                "code" => 7, 
+                "id" => 7, 
                 "sisben_zone_id" => 1               
             ],
 

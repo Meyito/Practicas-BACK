@@ -14,11 +14,13 @@ class CreateAgeRangeTable extends Migration
     public function up()
     {
         Schema::create('age_range', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->unsigned()->unique();
             $table->string('name');
             $table->integer('min_age')->unsigned();
             $table->integer('max_age')->unsigned();
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 

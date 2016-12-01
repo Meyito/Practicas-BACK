@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('subprogram_id')->unsigned();
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('subprogram_id')

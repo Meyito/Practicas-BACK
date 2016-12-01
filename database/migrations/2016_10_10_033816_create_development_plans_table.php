@@ -15,7 +15,6 @@ class CreateDevelopmentPlansTable extends Migration
         Schema::create('development_plans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
-            $table->text('slogan');
             $table->date('init_year');
             $table->date('end_year');
         });
