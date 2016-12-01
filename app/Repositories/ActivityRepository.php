@@ -94,7 +94,7 @@ class ActivityRepository extends EloquentRepository {
             LEFT JOIN zones z ON z.id=m.zone_id
             LEFT JOIN departments d ON d.id=z.department_id
             LEFT JOIN sisben_zones sz ON sz.id= aty.sisben_zone_id
-            WHERE d.code = {$codes[0]}
+            WHERE d.id = {$codes[0]}
             AND m.code = {$codes[1]}
             AND sz.code = {$codes[2]}
             AND au.sisben_code={$codes[3]}");
