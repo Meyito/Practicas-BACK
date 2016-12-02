@@ -84,7 +84,8 @@ $app->middleware([
 $app->routeMiddleware([
      //'auth' => App\Http\Middleware\Authenticate::class,
     'preflight' => App\Http\Middleware\Preflight::class,
-    'jwt-auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class
+    'jwt-auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+    'cors' => \Palanik\lumen\Middleware\LumenCors::class,
  ]);
 
 /*

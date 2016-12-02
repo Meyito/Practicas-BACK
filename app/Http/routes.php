@@ -49,6 +49,7 @@ $app->group([
     'prefix' => 'api/v1',
     'middleware' => [
         'preflight',
+        'cors'
         //'jwt-auth'
     ],
 ],
