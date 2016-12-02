@@ -50,16 +50,6 @@ class DatabaseSeeder extends Seeder
         $this->command->info('counter_filters table seeded!');
         $this->call('GenericFilterSeeder');
         $this->command->info('generic_filters table seeded!');
-
-        /*Should be only local*/
-        $this->call('UsersSeeder');
-        $this->command->info('users table seeded!');
-        $this->call('ContractSeeder');
-        $this->command->info('contracts table seeded!');
-        $this->call('ContractorSeeder');
-        $this->command->info('contractors table seeded!');
-        $this->call('ContractorContractSeeder');
-        $this->command->info('contractor_contracts table seeded!');
         
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();
