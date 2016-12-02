@@ -16,6 +16,7 @@ class CreateMotorDisabiitiesTable extends Migration
         Schema::create('motor_disabilities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('abbreviation');
             $table->timestamps();
         });
     }

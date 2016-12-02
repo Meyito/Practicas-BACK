@@ -16,6 +16,7 @@ class CreateVisualImpairmentsTable extends Migration
         Schema::create('visual_impairments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('abbreviation');
             $table->timestamps();
         });
     }

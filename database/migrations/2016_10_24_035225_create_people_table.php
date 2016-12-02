@@ -17,7 +17,6 @@ class CreatePeopleTable extends Migration
             $table->increments('id');
             $table->string('identification_number')->unique();
             $table->integer('identification_type_id')->unsigned();
-            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('identification_type_id')

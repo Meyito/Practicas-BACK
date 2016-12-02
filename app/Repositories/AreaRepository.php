@@ -52,7 +52,7 @@ class AreaRepository extends EloquentRepository {
             "code" => $row['cod_area'],
             "name" => $row['nombre_area'],
             "municipality_id" => $this->parseData( $row['cod_municipio'], \App\Models\Municipality::class, 'code','municipio' ),
-            "area_type_id" => $this->parseData( $row['tipo_area'], \App\Models\AreaType::class,'code', 'Tipo de Area' )
+            "area_type_id" => $this->parseData( $row['tipo_area'], \App\Models\AreaType::class,'id', 'Tipo de Area' )
         ];
 
         if (!empty($this->errors)) {

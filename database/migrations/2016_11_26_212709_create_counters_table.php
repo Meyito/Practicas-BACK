@@ -14,9 +14,12 @@ class CreateCountersTable extends Migration
     public function up()
     {
         Schema::create('counters', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->unsigned()->unique();
             $table->string('label');
             $table->string('column');
+            $table->string("response");
+
+            $table->primary('id');
         });
     }
 

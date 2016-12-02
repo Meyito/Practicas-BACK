@@ -14,6 +14,7 @@ class CreateContractorContractsTable extends Migration
     public function up()
     {
         Schema::create('contractor_contracts', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('contractor_id')->unsigned();
             $table->integer('contract_id')->unsigned();
 

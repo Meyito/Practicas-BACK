@@ -17,17 +17,12 @@ class CreateAxesTable extends Migration
             $table->increments('id');
             $table->string('code', 5);
             $table->string('name');
-            $table->integer('dimension_id')->unsigned();
-            $table->integer('created_by')->unsigned();
+            $table->integer('dimention_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('dimension_id')
+            $table->foreign('dimention_id')
                 ->references('id')
                 ->on('dimentions');
-
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users');
         });
     }
 

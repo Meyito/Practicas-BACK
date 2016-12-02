@@ -14,9 +14,12 @@ class CreateFiltersTable extends Migration
     public function up()
     {
         Schema::create('filters', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->unsigned()->unique();
             $table->string('label');
             $table->string('column');
+            $table->string('endpoint');
+
+            $table->primary('id');
         });
     }
 

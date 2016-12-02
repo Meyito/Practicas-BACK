@@ -9,12 +9,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run(){
         $this->call('IdentificationTypeSeeder');
         $this->command->info('identification types table seeded!');
         $this->call('SecretariesSeeder');
         $this->command->info('secretaries table seeded!');
+        $this->call('UsersSeeder');
+        $this->command->info('users table seeded!');
         $this->call('GenderSeeder');
         $this->command->info('genders table seeded!');
         $this->call('SpecialConditionSeeder');
@@ -60,15 +61,12 @@ class DatabaseSeeder extends Seeder
         $this->call('ContractorContractSeeder');
         $this->command->info('contractor_contracts table seeded!');
         
-
         if (app()->environment('local')) {
             $this->seedLocalEnvironment();
         }
     }
 
     public function seedLocalEnvironment() {
-        $this->call('UsersSeeder');
-        $this->command->info('users table seeded!');
         $this->call('ContractSeeder');
         $this->command->info('contracts table seeded!');
         $this->call('ContractorSeeder');

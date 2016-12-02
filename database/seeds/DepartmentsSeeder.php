@@ -15,7 +15,7 @@ class DepartmentsSeeder
         $departments = [
             [
                 "name" => "Norte de Santander",
-                "code" => 54
+                "id" => 54
             ]
         ];
 

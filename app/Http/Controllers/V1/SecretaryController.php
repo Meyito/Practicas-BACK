@@ -30,8 +30,6 @@ class SecretaryController extends Controller {
 
     public function store(Request $request) {
         $data = $request->all();
-        //$data['user_id'] = UserHelper::getCurrentUser()->id;
-
         $secretary = new Secretaries($data);
 
         if ($this->secretary->create($secretary)) {
@@ -40,6 +38,41 @@ class SecretaryController extends Controller {
 
         return response()->json($secretary->getErrors(),
             IlluminateResponse::HTTP_BAD_REQUEST);
+    }
+
+    public function update(Request $request, $id) {
+        $data = $request->get('secretary');
+        $secretary = $this->secretary->find($id);
+
+        if (!$secretary) {
+            return response()->json(["error" => "No existe la dependencia suministrado"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $this->secretary->update($secretary, $data);
+            return response()->json($secretary);
+        } catch (TransactionException $exc) {
+            return response()->json($exc->getErrorsArray(),
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function destroy($id) {
+        $secretary = $this->secretary->find($id);
+
+        if (!$secretary) {
+            return response()->json(["error" =>
+                        "No existe la dependencia suministrada"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        if ($this->secretary->delete($secretary)) {
+            return response()->json($secretary);
+        }
+        return response()->json(["error" =>
+                    "No se pudo eliminar la dependencia"],
+                        IlluminateResponse::HTTP_BAD_REQUEST);
     }
 
 }

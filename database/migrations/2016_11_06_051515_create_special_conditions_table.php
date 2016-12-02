@@ -16,6 +16,7 @@ class CreateSpecialConditionsTable extends Migration
         Schema::create('special_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('abbreviation');
             $table->timestamps();
         });
     }

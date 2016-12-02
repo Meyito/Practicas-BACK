@@ -22,6 +22,7 @@ class CreateTableActivities extends Migration
             $table->string('registro_pptal');
             $table->integer('project_id')->unsigned();
             $table->integer('goal_id')->unsigned();
+            $table->integer('administrative_unit_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('project_id')
@@ -31,6 +32,10 @@ class CreateTableActivities extends Migration
             $table->foreign('goal_id')
             ->references('id')
             ->on('goals');
+
+            $table->foreign('administrative_unit_id')
+            ->references('id')
+            ->on('administrative_units');
         });
     }
 

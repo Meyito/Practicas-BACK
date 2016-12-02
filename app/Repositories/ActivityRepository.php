@@ -54,6 +54,11 @@ class ActivityRepository extends EloquentRepository {
         $contract_id = $this->parseData( $row['contrato'], \App\Models\Contract::class, 'code', 'Contrato' );
         $contractor_id = $this->parseData( $row['contratista'], \App\Models\Contractor::class, 'identification_number', 'Contratista' );
 
+        if (!empty($this->errors)) {
+            throw new TransactionException($this->errors,
+            "Se encontraron errores en la linea");
+        }
+        
         $response = [
             "description" => $row['nombre_actividad'],
             "code" => $row['cod_actividad'],
@@ -94,7 +99,7 @@ class ActivityRepository extends EloquentRepository {
             LEFT JOIN zones z ON z.id=m.zone_id
             LEFT JOIN departments d ON d.id=z.department_id
             LEFT JOIN sisben_zones sz ON sz.id= aty.sisben_zone_id
-            WHERE d.code = {$codes[0]}
+            WHERE d.id = {$codes[0]}
             AND m.code = {$codes[1]}
             AND sz.code = {$codes[2]}
             AND au.sisben_code={$codes[3]}");
@@ -136,31 +141,31 @@ class ActivityRepository extends EloquentRepository {
 
         $development_plan = DevelopmentPlan::all()->last()->id;
 
-        $dimention = $this->parseData( $development_plan, \App\Models\Dimention::class, 'development_plan_id', 'Plan de Desarrollo');
+        $dimention = $this->parseDataGoal( $development_plan, \App\Models\Dimention::class, 'development_plan_id', 'Plan de Desarrollo', 'code', $codes[0]);
 
         if(is_null($dimention)){
             return null;
         }
 
-        $axe = $this->parseData( $dimention, \App\Models\Axe::class, 'dimention_id', 'dimensión');
+        $axe = $this->parseDataGoal( $dimention, \App\Models\Axe::class, 'dimention_id', 'dimensión', 'code', $codes[1]);
 
         if(is_null($axe)){
             return null;
         }
 
-        $program = $this->parseData( $axe, \App\Models\Program::class, 'axe_id', 'eje');
+        $program = $this->parseDataGoal( $axe, \App\Models\Program::class, 'axe_id', 'eje', 'code', $codes[2]);
 
         if(is_null($program)){
             return null;
         }
 
-        $subprogram = $this->parseData( $program, \App\Models\Subprogram::class, 'program_id', 'progama');
+        $subprogram = $this->parseDataGoal( $program, \App\Models\Subprogram::class, 'program_id', 'progama', 'code', $codes[3]);
 
         if(is_null($subprogram)){
             return null;
         }
 
-        $goal = $this->parseData( $subprogram, \App\Models\Goal::class, 'subprogram_id', 'subprograma');
+        $goal = $this->parseDataGoal( $subprogram, \App\Models\Goal::class, 'subprogram_id', 'subprograma', 'code', $codes[4]);
 
         return $goal;
     }
@@ -177,6 +182,25 @@ class ActivityRepository extends EloquentRepository {
 
         if( !$m ){
             $this->errors[] = "No se encontró un " . $string ." con el código " . $code;
+            return null;
+        }
+                
+        return $m->id;
+    }
+
+    private function parseDataGoal($code, $modelClass, $column, $string, $column2, $code2){
+        if( is_null($code) ){
+            $this->errors[] = "No se suministró el " . $string;
+            return null;
+        }
+
+        $m = $modelClass::where([
+                    [$column, '=', $code],
+                    [$column2, '=', $code2],
+                ])->first();
+
+        if( !$m ){
+            $this->errors[] = "No se encontró un " . $string ." con el código " . $code2;
             return null;
         }
                 
@@ -233,6 +257,8 @@ class ActivityRepository extends EloquentRepository {
     }
 
     private function parseAssistant($row){
+        $this->errors = [];
+        
         $person_data = [
             "identification_type_id" => $this->parseData($row["tipo_identificacion"], \App\Models\IdentificationType::class, "abbreviation", "Tipo de identificación"),
             "identification_number" => $row["numero_documento"]
@@ -241,6 +267,18 @@ class ActivityRepository extends EloquentRepository {
         $person_id = $this->savePerson($person_data, \App\Models\Person::class);
 
         if( is_null($person_id) ){
+            throw new TransactionException($this->errors,
+            "Se encontraron errores en la linea");
+        }
+
+        if( is_null($row["madre_cabeza_hogar"]) ){
+            $this->errors[] = "No se especifico la condición de madre cabeza de Hogar";
+            throw new TransactionException($this->errors,
+            "Se encontraron errores en la linea");
+        }
+
+        if( is_null($row["discapacidad_mental"]) ){
+            $this->errors[] = "No se especifico la condición de madre discapacidad mental";
             throw new TransactionException($this->errors,
             "Se encontraron errores en la linea");
         }
@@ -337,7 +375,11 @@ class ActivityRepository extends EloquentRepository {
 
     private function savePerson($data, $modelClass){
         if( is_null($data["identification_type_id"]) ){
-            $this->errors[] = "No se suministró el tipo de identificación";
+            return null;
+        }
+
+        if( is_null($data["identification_number"]) ){
+            $this->errors[] = "No se suministró el número de identificación";
             return null;
         }
 
