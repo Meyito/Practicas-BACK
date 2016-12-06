@@ -35,8 +35,16 @@ return [
     */
 
     'guards' => [
-        'api' => ['provider' => 'jwt', 'driver' => 'jwt'],
+        'api' => [
+            'driver' => 'api',
+            'provider' => 'users',
+            'identifier' => 'username',
+            'password' => 'username',
+        ],
     ],
+    /*'guards' => [
+        'api' => ['provider' => 'jwt', 'driver' => 'jwt'],
+    ],*/
 
     /*
     |--------------------------------------------------------------------------
@@ -55,8 +63,16 @@ return [
     |
     */
 
-    'providers' => [
+    /*'providers' => [
         'jwt' => ['driver' => 'eloquent', 'model' => App\Models\User::class]
+    ],*/
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            // We should get model name from JWT configuration
+            'model'  => app('config')->get('jwt.user'),
+        ],
     ],
 
     /*
