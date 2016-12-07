@@ -59,6 +59,7 @@ $app->group([
     function () use ($app) {
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->get("axes", "AxeController@index");
+        $app->get("roles", "RoleController@index");
         $app->get("counters", "CounterController@index");
         $app->get("generic-filters", "GenericFilterController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
@@ -81,6 +82,7 @@ $app->group([
         resource('visual-impairments', 'VisualImpairmentController');
         resource('hearing-impairments', 'HearingImpairmentController');
         resource('users', 'UserController');
+        $app->put('users/{id}/password', 'UserController@passwordUpdate');
         resource('motor-disabilities', 'MotorDisabilityController');
         resource('victim-types', 'VictimTypeController');
         resource('contractors', 'ContractorController');

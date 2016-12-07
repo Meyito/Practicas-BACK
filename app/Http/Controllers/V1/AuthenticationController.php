@@ -50,19 +50,13 @@ class AuthenticationController extends Controller{
 
         $views = [];
 
-        /*foreach ($user->role->views as $view) {
-            $views[$view->name] = "allowed";
-        }*/
+        foreach ($user->role->views as $view) {
+            $views[$view->view_name] = "allowed";
+        }
 
-        /*$payload = JWTFactory::make([
-                    "username" => $user->username,
-                    "sub" => $user->id,
-                    "role" => $user->role,
-                    "views" => $views
-        ]);*/
         $payload = JWTFactory::make([
             'name' => $user->name,
-            'role' => "admin",
+            'role' => $user->role,
             'views' => $views
         ]);
 

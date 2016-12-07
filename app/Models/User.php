@@ -14,10 +14,14 @@ class User extends BaseModel implements
 
     use Authenticatable, Authorizable;
 
+    protected $table = "users";
+
     protected $fillable = [
         "username",
         "password",
-        "name"
+        "name",
+        "role_id",
+        "secretary_id"
     ];
 
     protected $hidden = [
@@ -26,12 +30,17 @@ class User extends BaseModel implements
     ];
 
     protected static $rules = [
-        'username' => 'required|unique:user,username,:ID',
+        'username' => 'required|unique:users,username,:ID',
+        'role_id' => 'required|exists:roles,id',
+        'secretary_id' => 'exists:secretaries,id',
         'password' => 'required',
         'name' => 'required'
     ];
 
     protected $messages = [
+        "role_id.required" => "El rol del usuario es requerido",
+        "role_id.exists" => "El rol es inválido",
+        "secretary_id.exists" => "La secretaría es inválida",
         "username.required" => "El nombre de usuario es requerido",
         "password.required" => "El nombre de usuario es requerido",
         "name.required" => "El nombre es requerido",
@@ -39,7 +48,11 @@ class User extends BaseModel implements
     ];
 
     function secretary(){
-        return $this->belongsTo(Secretary::class);
+        return $this->belongsTo(Secretaries::class);
+    }
+
+    function role(){
+        return $this->belongsTo(Role::class);
     }
 
 }

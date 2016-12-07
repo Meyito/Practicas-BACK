@@ -10,6 +10,12 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run(){
+        $this->call('ViewsSeeder');
+        $this->command->info('views table seeded!');
+        $this->call('RoleSeeder');
+        $this->command->info('role table seeded!');
+        $this->call('RoleViewSeeder');
+        $this->command->info('role views table seeded!');
         $this->call('IdentificationTypeSeeder');
         $this->command->info('identification types table seeded!');
         $this->call('SecretariesSeeder');
