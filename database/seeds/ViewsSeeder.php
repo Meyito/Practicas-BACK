@@ -20,6 +20,22 @@ class ViewsSeeder extends Seeder {
                 "view_name" => "users",
                 "id" => "2"
             ],
+            [
+                "view_name" => "contracts",
+                "id" => "3"
+            ],
+            [
+                "view_name" => "territorial-entities",
+                "id" => "4"
+            ],
+            [
+                "view_name" => "secretaries",
+                "id" => "5"
+            ],
+            [
+                "view_name" => "development-plan",
+                "id" => "6"
+            ],
         ];
 
         DB::table('views')->insert($views);

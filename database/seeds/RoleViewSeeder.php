@@ -28,6 +28,22 @@ class RoleViewSeeder extends Seeder {
                 "role_id" => 1,
                 "view_id" => 2,
             ],
+            [
+                "role_id" => 1,
+                "view_id" => 3,
+            ],
+            [
+                "role_id" => 1,
+                "view_id" => 4,
+            ],
+            [
+                "role_id" => 1,
+                "view_id" => 5,
+            ],
+            [
+                "role_id" => 2,
+                "view_id" => 6,
+            ],
         ];
 
         DB::table('role_views')->insert($role_views);

@@ -19,7 +19,21 @@ class UsersSeeder extends Seeder {
                 "secretary_id" => 1,
                 "name" => "Administrador",
                 "role_id" => 1
-            ]
+            ],
+            [
+                "username" => "planeacion",
+                "password" => Hash::make("12345"),
+                "secretary_id" => 1,
+                "name" => "Alejandro Rendon",
+                "role_id" => 2
+            ],
+            [
+                "username" => "secretaria",
+                "password" => Hash::make("12345"),
+                "secretary_id" => 1,
+                "name" => "Will Carstairs",
+                "role_id" => 3
+            ],
         ];
 
         DB::table('users')->insert($users);
