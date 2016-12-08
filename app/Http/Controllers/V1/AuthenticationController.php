@@ -56,6 +56,7 @@ class AuthenticationController extends Controller{
 
         $payload = JWTFactory::make([
             'name' => $user->name,
+            'secretary_id' => $user->secretary_id,
             'role' => $user->role,
             'views' => $views
         ]);

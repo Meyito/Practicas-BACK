@@ -17,7 +17,7 @@ class ActivityRepository extends EloquentRepository {
 
     protected $model = "App\Models\Activity";
 
-    public function bulkStore($data) {
+    public function bulkStore($data, $secretary) {
         $errorsArray = [];
         $response = [];
         $response["success"] = true;
@@ -29,6 +29,7 @@ class ActivityRepository extends EloquentRepository {
 
             try {
                 $parsedRow = $this->parseRow($row);
+                $parsedRow["secretary_id"] = $secretary;
                 $response["id"] = $this->saveActivity($parsedRow);
             } catch (TransactionException $exc) {
                 $row = $key + 1;
@@ -139,7 +140,7 @@ class ActivityRepository extends EloquentRepository {
             return null;
         }
 
-        $development_plan = DevelopmentPlan::all()->last()->id;
+        $development_plan = DevelopmentPlan::orderBy('id', 'desc')->first()->id;
 
         $dimention = $this->parseDataGoal( $development_plan, \App\Models\Dimention::class, 'development_plan_id', 'Plan de Desarrollo', 'code', $codes[0]);
 

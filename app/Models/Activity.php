@@ -23,7 +23,8 @@ class Activity extends BaseModel {
         "project_id",
         "goal_id",
         "contractor_contract_id",
-        "administrative_unit_id"
+        "administrative_unit_id",
+        "secretary_id"
     ];
 
     protected $hidden = [
@@ -39,7 +40,8 @@ class Activity extends BaseModel {
         'project_id' => 'required|exists:projects,id',
         'goal_id' => 'required|exists:goals,id',
         'contractor_contract_id' => 'required|exists:contractor_contracts,id',
-        'administrative_unit_id' => 'required|exists:administrative_units,id'
+        'administrative_unit_id' => 'required|exists:administrative_units,id',
+        'secretary_id' => 'required|exists:secretaries,id'
     ];
 
     protected $messages = [
@@ -58,6 +60,8 @@ class Activity extends BaseModel {
         "contractor_contract_id.exists" => "El contrato/contratista es inválido",
         "administrative_unit_id.required" => "La localización es requerida",
         "administrative_unit_id.exists" => "La localización es inválida",
+        "secretary_id.required" => "La secretaria es requerida",
+        "secretary_id.exists" => "La secretaria es inválida",
     ];
 
     function assistants(){

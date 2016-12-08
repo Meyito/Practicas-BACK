@@ -15,49 +15,49 @@ class FilterSeeder extends Seeder {
             [
                 "id" => 1,
                 "label" => "Género",
-                "column" => "g.id",
+                "column" => "ch.gender_id",
                 "endpoint" => "genders"
             ],
             [
                 "id" => 2,
                 "label" => "Rango Edad",
-                "column" => "ar.id",
+                "column" => "ch.age_range_id",
                 "endpoint" => "age-range"
             ],
             [
                 "id" => 3,
                 "label" => "Condición Especial",
-                "column" => "sc.id",
+                "column" => "ch.special_condition_id",
                 "endpoint" => "special-conditions"
             ],
             [
                 "id" => 4,
                 "label" => "Discapacidad Auditiva",
-                "column" => "hi.id",
+                "column" => "ch.hearing_impairment_id",
                 "endpoint" => "hearing-impairments"
             ],
             [
                 "id" => 5,
                 "label" => "Discapacidad Visual",
-                "column" => "vi.id",
+                "column" => "ch.visual_impairment_id",
                 "endpoint" => "visual-impairments"
             ],
             [
                 "id" => 6,
                 "label" => "Discapacidad Motriz",
-                "column" => "md.id",
+                "column" => "ch.motor_disability_id",
                 "endpoint" => "motor-disabilities"
             ],
             [
                 "id" => 7,
                 "label" => "Tipo Víctima",
-                "column" => "vt.id",
+                "column" => "ch.victim_type_id",
                 "endpoint" => "victim-types"
             ],
             [
                 "id" => 8,
                 "label" => "Grupo Etnico",
-                "column" => "eg.id",
+                "column" => "ch.ethnic_group_id",
                 "endpoint" => "ethnic-groups"
             ],
             [
@@ -71,6 +71,24 @@ class FilterSeeder extends Seeder {
                 "label" => "Discapacidad Mental",
                 "column" => "ch.is_mentally_disabled",
                 "endpoint" => "NA"
+            ],
+            [
+                "id" => 11,
+                "label" => "Número Identificación",
+                "column" => "p.identification_number",
+                "endpoint" => "NA"
+            ],
+            [
+                "id" => 12,
+                "label" => "Zona Sisben",
+                "column" => "sz.id",
+                "endpoint" => "sisben-zones"
+            ],
+            [
+                "id" => 13,
+                "label" => "Municipio",
+                "column" => "m.id",
+                "endpoint" => "municipalities"
             ],
         ];
 

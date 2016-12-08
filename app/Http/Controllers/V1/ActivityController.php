@@ -45,12 +45,13 @@ class ActivityController extends Controller {
 
     public function uploadActivity(Request $request){
         $file = $this->getFile($request);
-
+        $data = $request->all()["data"];
+        
         try {
             $reader = Excel::selectSheetsByIndex(0)->load($file->getRealPath(),
                         null, null, true);
 
-            $results = $this->activity->bulkStore( $reader->toArray() );
+            $results = $this->activity->bulkStore( $reader->toArray(), $data["secretary_id"] );
 
             if ($results["success"] === true) {
                 $reader = Excel::selectSheetsByIndex(1)->load($file->getRealPath(),
@@ -63,11 +64,6 @@ class ActivityController extends Controller {
                 }else{
                     return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
                 }
-                /*CARGAR LOS ASISTENTES
-                Si todo bien -> exito
-                Si no, eliminar la actividad y mostrar los errores
-                */
-                
             } else {
                 return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
             }

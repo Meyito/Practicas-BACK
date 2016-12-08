@@ -15,7 +15,7 @@ class ContractorSeeder extends Seeder {
             [
                 "first_name" => "Gabriel",
                 "last_name" => "Rojas",
-                "identification_number" => 12345,
+                "identification_number" => 123456789,
                 "identification_type_id" => 1,                
             ]
         ];
