@@ -72,6 +72,10 @@ class ViewsSeeder extends Seeder {
                 "view_name" => "programs",
                 "id" => "15"
             ],
+            [
+                "view_name" => "territorial-list",
+                "id" => "16"
+            ],
         ];
 
         DB::table('views')->insert($views);

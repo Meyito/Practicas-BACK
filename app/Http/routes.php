@@ -60,6 +60,7 @@ $app->group([
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->get("development-plans/last", "DevelopmentPlanController@last");
         $app->get("development-plans/{id}", "DevelopmentPlanController@show");
+        $app->get("administrative-units/query", "AdministrativeUnitController@queryCode");
         $app->get("axes", "AxeController@index");
         $app->get("roles", "RoleController@index");
         $app->get("counters", "CounterController@index");

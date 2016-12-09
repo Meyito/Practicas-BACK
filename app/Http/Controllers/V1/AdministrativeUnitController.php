@@ -92,4 +92,20 @@ class AdministrativeUnitController extends Controller {
         return true;
     }
 
+    public function queryCode(Request $request){
+        $data = $request->get('code');
+
+        try{
+            $results = $this->administrative_unit->getCode( $data );
+            if($results["success"]){
+                return response()->json($results);
+            }else{
+                return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
+            }
+        }catch (Exception $e) {
+            return response()->json(["error" => "Ocurrió un error al consultar el código."],
+                                IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+    }
+
 }

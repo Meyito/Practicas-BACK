@@ -61,6 +61,14 @@ class RoleViewSeeder extends Seeder {
                 "view_id" => 14,
             ],
             [
+                "role_id" => 2,
+                "view_id" => 16,
+            ],
+            [
+                "role_id" => 3,
+                "view_id" => 16,
+            ],
+            [
                 "role_id" => 3,
                 "view_id" => 1,
             ],

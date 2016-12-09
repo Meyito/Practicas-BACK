@@ -40,4 +40,12 @@ class Area extends BaseModel {
         "area_type_id.exists" => "El tipo de area es inválida",
     ];
 
+    function area_type(){
+        return $this->belongsTo(AreaType::class);
+    }
+
+    function municipality(){
+        return $this->belongsTo(Municipality::class);
+    }
+
 }

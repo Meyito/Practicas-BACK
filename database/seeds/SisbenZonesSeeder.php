@@ -14,14 +14,15 @@ class SisbenZonesSeeder
 
         $sisben_zones = [
             [
-                "name" => "Rural",
-                "code" => 2,                
-            ],
-            [
                 "name" => "Urbana",
+                "id" => 1,     
                 "code" => 1,                
             ],
-
+            [
+                "name" => "Rural",
+                "id" => 2,  
+                "code" => 2,                
+            ],
         ];
 
         DB::table('sisben_zones')->insert($sisben_zones);
