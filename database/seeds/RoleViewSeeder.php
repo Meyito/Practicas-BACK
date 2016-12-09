@@ -80,6 +80,10 @@ class RoleViewSeeder extends Seeder {
                 "role_id" => 3,
                 "view_id" => 12,
             ],
+            [
+                "role_id" => 3,
+                "view_id" => 13,
+            ],
         ];
 
         DB::table('role_views')->insert($role_views);
