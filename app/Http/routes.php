@@ -66,6 +66,7 @@ $app->group([
         $app->get("generic-filters", "GenericFilterController@index");
         $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
         $app->post("projects/upload", "ProjectController@uploadProjects");
+        $app->post("programs/{id}/secretaries", "ProgramController@secretaries");
         $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");
         $app->post("areas/upload", "AreaController@uploadAreas");
         $app->post("administrative-units/upload", "AdministrativeUnitController@uploadUnits");

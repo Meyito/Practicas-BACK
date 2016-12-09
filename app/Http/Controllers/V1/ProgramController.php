@@ -41,4 +41,23 @@ class ProgramController extends Controller {
             IlluminateResponse::HTTP_BAD_REQUEST);
     }
 
+    public function secretaries(Request $request, $id){
+        $data = $request->get('secretaries');
+        $program = $this->program->find($id);
+
+        if (!$program) {
+            return response()->json(["error" => "No existe el programa suministrado"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $program->secretaries()->detach();
+            $program->secretaries()->attach($data);
+            return response()->json($program);
+        } catch (TransactionException $exc) {
+            return response()->json($exc->getErrorsArray(),
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+    }
+
 }

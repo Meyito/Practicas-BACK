@@ -13,6 +13,28 @@ class ProgramRepository extends EloquentRepository {
 
     protected $model = "App\Models\Program";
 
+    protected $filterColumns = [
+        "development_plan_id"
+    ];
+
+    protected $leftJoins = [
+        [
+            "table" => "axes",
+            "localColumn" => "axe_id",
+            "foreignColumn" => "axes.id"
+        ],
+        [
+            "table" => "dimentions",
+            "localColumn" => "dimention_id",
+            "foreignColumn" => "dimentions.id"
+        ],
+        [
+            "table" => "development_plans",
+            "localColumn" => "development_plan_id",
+            "foreignColumn" => "development_plans.id"
+        ],
+    ];
+
     
     public function get($options = []){
         $queryOptions = array_merge($this->options, $options);
