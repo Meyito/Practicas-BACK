@@ -118,7 +118,7 @@ class ActivityController extends Controller {
                 LEFT JOIN dimentions dm ON dm.id = ax.dimention_id
                 LEFT JOIN development_plans dp ON dp.id = dm.development_plan_id
                 LEFT JOIN secretary_programs spg ON spg.program_id = pg.id
-                LEFT JOIN secretaries se ON se.id = spg.secretary_id
+                LEFT JOIN secretaries se ON se.id = a.secretary_id
                 LEFT JOIN contractor_contracts cc ON cc.id = a.contractor_contract_id
                 LEFT JOIN contractors c ON c.id = cc.contractor_id
                 LEFT JOIN characterizations ch ON ch.id = ac.characterization_id

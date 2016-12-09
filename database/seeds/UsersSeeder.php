@@ -25,14 +25,14 @@ class UsersSeeder extends Seeder {
                 "password" => Hash::make("12345"),
                 "secretary_id" => 1,
                 "name" => "Alejandro Rendon",
-                "role_id" => 2
+                "role_id" => 3
             ],
             [
                 "username" => "secretaria",
                 "password" => Hash::make("12345"),
                 "secretary_id" => 1,
                 "name" => "Will Carstairs",
-                "role_id" => 3
+                "role_id" => 2
             ],
         ];
 
