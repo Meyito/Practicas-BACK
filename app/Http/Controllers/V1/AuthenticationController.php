@@ -58,7 +58,8 @@ class AuthenticationController extends Controller{
             'name' => $user->name,
             'secretary_id' => $user->secretary_id,
             'role' => $user->role,
-            'views' => $views
+            'views' => $views,
+            'id' => $user->id
         ]);
 
         $token = JWTAuth::encode($payload)->get();
@@ -79,5 +80,42 @@ class AuthenticationController extends Controller{
                             IlluminateResponse::HTTP_BAD_REQUEST);
         }
     }
+
+    /**
+     * 
+     * @param string $tokenString
+     */
+    public function updatePassword(Request $request, $id) {
+        if (!$password = $request->get('password')) {
+            return response()->json([
+                        "error" => "No ha ingresado una nueva contraseña"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        $old_password = $request->get('actual_password');
+
+        $user = $this->user->find($id);
+
+        if (!$user) {
+            return response()->json(["error" => "No existe el usuario suministrado"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        if (!Hash::check($old_password, $user->password)) {
+            return response()->json([
+                        'error' => "Contraseña incorrecta"],
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $this->user->update($user, ["password" => $password]);
+            $this->invalidate();
+        } catch (TransactionException $exc) {
+            return response()->json($exc->getErrorsArray(),
+                            IlluminateResponse::HTTP_BAD_REQUEST);
+        }
+    }
+
+
 
 }

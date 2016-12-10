@@ -57,6 +57,7 @@ $app->group([
     ],
 ],
     function () use ($app) {
+        $app->put('authentication/{id}/update', 'AuthenticationController@updatePassword');
         $app->get("development-plans", "DevelopmentPlanController@index");
         $app->get("development-plans/last", "DevelopmentPlanController@last");
         $app->get("development-plans/{id}", "DevelopmentPlanController@show");

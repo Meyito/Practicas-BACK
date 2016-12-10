@@ -33,6 +33,10 @@ class RoleViewSeeder extends Seeder {
                 "view_id" => 5,
             ],
             [
+                "role_id" => 1,
+                "view_id" => 17,
+            ],
+            [
                 "role_id" => 2,
                 "view_id" => 1,
             ],
@@ -63,6 +67,14 @@ class RoleViewSeeder extends Seeder {
             [
                 "role_id" => 2,
                 "view_id" => 16,
+            ],
+            [
+                "role_id" => 2,
+                "view_id" => 17,
+            ],
+            [
+                "role_id" => 3,
+                "view_id" => 17,
             ],
             [
                 "role_id" => 3,
