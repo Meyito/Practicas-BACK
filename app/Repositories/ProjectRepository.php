@@ -19,6 +19,38 @@ use Exception;
 class ProjectRepository extends EloquentRepository {
 
     protected $model = "App\Models\Project";
+    protected $filterColumns = [
+        "status",
+        "development_plan_id"
+    ];
+
+    protected $leftJoins = [
+        [
+            "table" => "subprograms",
+            "localColumn" => "subprogram_id",
+            "foreignColumn" => "subprograms.id"
+        ],
+        [
+            "table" => "programs",
+            "localColumn" => "program_id",
+            "foreignColumn" => "programs.id"
+        ],
+        [
+            "table" => "axes",
+            "localColumn" => "axe_id",
+            "foreignColumn" => "axes.id"
+        ],
+        [
+            "table" => "dimentions",
+            "localColumn" => "dimention_id",
+            "foreignColumn" => "dimentions.id"
+        ],
+        [
+            "table" => "development_plans",
+            "localColumn" => "development_plan_id",
+            "foreignColumn" => "development_plans.id"
+        ],
+    ];
 
     public function bulkStore($data) {
         $errorsArray = [];

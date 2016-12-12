@@ -3,6 +3,7 @@
 namespace App\Repositories;
 use DB;
 use App\Exceptions\TransactionException;
+use App\Models\DevelopmentPlan;
 use Exception;
 
 
@@ -14,6 +15,18 @@ use Exception;
 class DevelopmentPlanRepository extends EloquentRepository {
 
     protected $model = "App\Models\DevelopmentPlan";
+
+    public function getLast($options){
+        $queryOptions = array_merge($this->options, $options);
+        $queryParams = array_diff_key($options, $this->options);
+
+        $relationships = is_string($queryOptions['relationships']) ? explode(",",
+            $queryOptions['relationships']) : [];
+        
+        $model = DevelopmentPlan::with($relationships)->orderBy('id', 'desc')->first();
+
+        return $model;
+    }
 
     public function bulkStore($data, $id) {
 

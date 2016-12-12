@@ -45,12 +45,13 @@ class ActivityController extends Controller {
 
     public function uploadActivity(Request $request){
         $file = $this->getFile($request);
-
+        $data = $request->all()["data"];
+        
         try {
             $reader = Excel::selectSheetsByIndex(0)->load($file->getRealPath(),
                         null, null, true);
 
-            $results = $this->activity->bulkStore( $reader->toArray() );
+            $results = $this->activity->bulkStore( $reader->toArray(), $data["secretary_id"] );
 
             if ($results["success"] === true) {
                 $reader = Excel::selectSheetsByIndex(1)->load($file->getRealPath(),
@@ -63,11 +64,6 @@ class ActivityController extends Controller {
                 }else{
                     return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
                 }
-                /*CARGAR LOS ASISTENTES
-                Si todo bien -> exito
-                Si no, eliminar la actividad y mostrar los errores
-                */
-                
             } else {
                 return response()->json($results, IlluminateResponse::HTTP_BAD_REQUEST);
             }
@@ -122,7 +118,7 @@ class ActivityController extends Controller {
                 LEFT JOIN dimentions dm ON dm.id = ax.dimention_id
                 LEFT JOIN development_plans dp ON dp.id = dm.development_plan_id
                 LEFT JOIN secretary_programs spg ON spg.program_id = pg.id
-                LEFT JOIN secretaries se ON se.id = spg.secretary_id
+                LEFT JOIN secretaries se ON se.id = a.secretary_id
                 LEFT JOIN contractor_contracts cc ON cc.id = a.contractor_contract_id
                 LEFT JOIN contractors c ON c.id = cc.contractor_id
                 LEFT JOIN characterizations ch ON ch.id = ac.characterization_id

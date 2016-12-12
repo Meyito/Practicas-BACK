@@ -39,4 +39,12 @@ class AdministrativeUnit extends BaseModel {
         "administrative_unit_type_id.exists" => "El tipo de unidad administrativa es inválida",
     ];
 
+    function area(){
+        return $this->belongsTo(Area::class);
+    }
+    
+    function administrative_unit_type(){
+        return $this->belongsTo(AdministrativeUnitType::class);
+    }
+
 }

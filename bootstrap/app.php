@@ -24,8 +24,8 @@ $app = new Laravel\Lumen\Application(
 );
 
  $app->withFacades();
- //$app->configure('jwt'); 
- //$app->configure('auth');
+ $app->configure('jwt'); 
+ $app->configure('auth');
  $app->configure('excel');
 
 
@@ -39,6 +39,14 @@ if (!class_exists('Response')) {
 
 if (!class_exists('Excel')) {
     class_alias('Maatwebsite\Excel\Facades\Excel', 'Excel');
+}
+
+if (!class_exists('JWTAuth')) {
+    class_alias(Tymon\JWTAuth\Facades\JWTAuth::class, 'JWTAuth');
+}
+
+if (!class_exists('JWTFactory')) {
+    class_alias(Tymon\JWTAuth\Facades\JWTFactory::class, 'JWTFactory');
 }
 
  $app->withEloquent();
@@ -64,6 +72,25 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->singleton(
+        Illuminate\Contracts\Routing\ResponseFactory::class,
+        Illuminate\Routing\ResponseFactory::class
+);
+
+$app->singleton(
+        Illuminate\Auth\AuthManager::class,
+        function ($app) {
+    return $app->make('auth');
+}
+);
+
+$app->singleton(
+        Illuminate\Cache\CacheManager::class,
+        function ($app) {
+    return $app->make('cache');
+}
+);
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -78,14 +105,14 @@ $app->singleton(
 $app->middleware([
     //App\Http\Middleware\ExampleMiddleware::class
     App\Http\Middleware\Preflight::class,
-    palanik\lumen\Middleware\LumenCors::class
+    palanik\lumen\Middleware\LumenCors::class,
+    App\Http\Middleware\AuthenticationMiddleware::class
  ]);
 
 $app->routeMiddleware([
-     //'auth' => App\Http\Middleware\Authenticate::class,
+    'auth' => App\Http\Middleware\Authenticate::class,
     'preflight' => App\Http\Middleware\Preflight::class,
-    'jwt-auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
-    'cors' => \Palanik\lumen\Middleware\LumenCors::class,
+    'jwt-auth' => App\Http\Middleware\JWTAuthentication::class
  ]);
 
 /*
@@ -99,12 +126,11 @@ $app->routeMiddleware([
 |
 */
 
-$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
-
+$app->register(Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
 $app->register('Maatwebsite\Excel\ExcelServiceProvider');
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\EventServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

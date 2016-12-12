@@ -36,65 +36,111 @@ $app->get('/key', function () {
 });
 
 $app->group([
+    'namespace' => '\App\Http\Controllers\V1',
     'middleware' => 'preflight',
     'prefix' => 'api/v1'], 
     function () use ($app) {
-        $app->post('authenticate', 'AuthenticationController@authenticate');
+        $app->post('login', 'AuthenticationController@login');
+        $app->get('logout', 'AuthenticationController@invalidate');
+
         $app->get('/test', function () use ($app) {
             return "Welcome to Meyito Backend  :c :3";
         });
 });
 
 $app->group([
+    'namespace' => '\App\Http\Controllers\V1',
     'prefix' => 'api/v1',
     'middleware' => [
         'preflight',
-        'cors'
-        //'jwt-auth'
+        'jwt-auth'
     ],
 ],
     function () use ($app) {
+        $app->put('authentication/{id}/update', 'AuthenticationController@updatePassword');
+
         $app->get("development-plans", "DevelopmentPlanController@index");
-        $app->get("axes", "AxeController@index");
-        $app->get("counters", "CounterController@index");
-        $app->get("generic-filters", "GenericFilterController@index");
-        $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
-        $app->post("projects/upload", "ProjectController@uploadProjects");
-        $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");
-        $app->post("areas/upload", "AreaController@uploadAreas");
+        $app->get("development-plans/last", "DevelopmentPlanController@last");
+        $app->get("development-plans/{id}", "DevelopmentPlanController@show");
+
+        $app->get("administrative-units/query", "AdministrativeUnitController@queryCode");
         $app->post("administrative-units/upload", "AdministrativeUnitController@uploadUnits");
+        resource('administrative-unit-types', 'AdministrativeUnitTypeController');
+        resource('administrative-units', 'AdministrativeUnitController');
+
+        $app->get("axes", "AxeController@index");
+
+        $app->get("roles", "RoleController@index");
+
+        $app->get("counters", "CounterController@index");
+        
+        $app->get("generic-filters", "GenericFilterController@index");
+        
+        $app->post("plan/upload", "DevelopmentPlanController@uploadPlan");
+        
+        $app->post("projects/upload", "ProjectController@uploadProjects");
+        resource('projects', 'ProjectController');
+        
+        $app->post("programs/{id}/secretaries", "ProgramController@secretaries");
+        resource('programs', 'ProgramController');
+        
+        $app->post("municipalities/upload", "MunicipalityController@uploadTerritories");
+        
+        $app->post("areas/upload", "AreaController@uploadAreas");
+        
         $app->post("activities/upload", "ActivityController@uploadActivity");
-        $app->get("identification-types", "IdentificationTypeController@index");
-        $app->get("age-range", "AgeRangeController@index");
         $app->post("activities/lite", "ActivityController@filterActivities");
+        resource('activities', 'ActivityController');
+        
+        $app->get("identification-types", "IdentificationTypeController@index");
+        
+        $app->get("age-range", "AgeRangeController@index");
+        
         $app->post('contractors/{id}/contracts', "ContractorController@addContract");
+        
         $app->post("reports", "ReportController@report");
+        
         resource("dimentions", "DimentionController");
+        
         resource('people', 'PersonController');
+        
         resource('secretaries', 'SecretaryController');
+        
         resource('ethnic-groups', 'EthnicGroupController');
+        
         resource('genders', 'GenderController');
+        
         resource('special-conditions', 'SpecialConditionController');
+        
         resource('visual-impairments', 'VisualImpairmentController');
+        
         resource('hearing-impairments', 'HearingImpairmentController');
+        
         resource('users', 'UserController');
+        $app->put('users/{id}/password', 'UserController@passwordUpdate');
+        
         resource('motor-disabilities', 'MotorDisabilityController');
+        
         resource('victim-types', 'VictimTypeController');
+        
         resource('contractors', 'ContractorController');
         resource('contracts', 'ContractController');
-        resource('zones', 'ZoneController');
-        resource('administrative-unit-types', 'AdministrativeUnitTypeController');
-        resource('programs', 'ProgramController');
-        resource('subprograms', 'SubprogramController');
-        resource('goals', 'GoalController');
-        resource('projects', 'ProjectController');
-        resource('sisben-zones', 'SisbenZoneController');
-        resource('area-types', 'AreaTypeController');
-        resource('municipalities', 'MunicipalityController');
-        resource('areas', 'AreaController');
-        resource('administrative-units', 'AdministrativeUnitController');
-        resource('activities', 'ActivityController');
-        resource('departments', 'DepartmentController');
-        resource('characterizations', 'CharacterizationController');
         
+        resource('zones', 'ZoneController');
+        
+        resource('subprograms', 'SubprogramController');
+        
+        resource('goals', 'GoalController');
+        
+        resource('sisben-zones', 'SisbenZoneController');
+        
+        resource('area-types', 'AreaTypeController');
+        
+        resource('municipalities', 'MunicipalityController');
+        
+        resource('areas', 'AreaController');
+        
+        resource('departments', 'DepartmentController');
+        
+        resource('characterizations', 'CharacterizationController');
     });

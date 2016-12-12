@@ -13,7 +13,7 @@ class ContractSeeder extends Seeder {
 
         $contracts = [
             [
-                "code" => "12",
+                "code" => "121213",
                 "init_date" => "2016-01-01",
                 "end_date" => "2016-12-31",                
             ]

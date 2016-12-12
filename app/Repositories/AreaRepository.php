@@ -16,6 +16,23 @@ use Exception;
 class AreaRepository extends EloquentRepository {
 
     protected $model = "App\Models\Area";
+    protected $filterColumns = [
+        "municipality_id",
+        "sisben_zone_id"
+    ];
+
+    protected $leftJoins = [
+        [
+            "table" => "area_types",
+            "localColumn" => "area_type_id",
+            "foreignColumn" => "area_types.id"
+        ],
+        [
+            "table" => "sisben_zones",
+            "localColumn" => "sisben_zone_id",
+            "foreignColumn" => "sisben_zones.id"
+        ]
+    ];
 
     public function bulkStore($data) {
         $errorsArray = [];

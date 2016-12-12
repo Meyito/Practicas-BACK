@@ -28,6 +28,11 @@ class DevelopmentPlanController extends Controller {
         return response()->json($this->developmentPlan->get($options));
     }
 
+    public function last(Request $request) {
+        $options = $request->all() ?: [];
+        return response()->json($this->developmentPlan->getLast($options));
+    }
+
     public  function uploadPlan(Request $request){
 
         $file = $this->getFile($request);
