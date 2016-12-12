@@ -13,9 +13,11 @@ class SecretariesSeeder extends Seeder {
 
         $secretaries = [
             [
-                "name" => "Secretaría de Atención Integral a Victimas"
+                "name" => "Secretaría de Atención Integral a Victimas",
+                "id" => 1
             ],[
-                "name" => "Secretaría de Planeación y Desarrollo Territorial"
+                "name" => "Secretaría de Planeación y Desarrollo Territorial",
+                "id" => 2
             ],[
                 "name" => "Secretaría de Tecnologías de la Información y Comunicaciones"
             ],[
