@@ -16,6 +16,7 @@ class Secretaries extends BaseModel {
 
     protected $fillable = [
         "name",
+        "id"
     ];
 
     protected $hidden = [
