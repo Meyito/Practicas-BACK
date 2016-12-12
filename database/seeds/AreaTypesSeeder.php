@@ -41,12 +41,12 @@ class AreaTypesSeeder
             [
                 "name" => "Comuna",
                 "id" => 6, 
-                "sisben_zone_id" => 12              
+                "sisben_zone_id" => 1              
             ],
             [
                 "name" => "Cabecera Municipal",
                 "id" => 7, 
-                "sisben_zone_id" => 12              
+                "sisben_zone_id" => 1              
             ],
 
         ];
