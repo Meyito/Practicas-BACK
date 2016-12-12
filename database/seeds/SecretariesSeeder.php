@@ -19,39 +19,56 @@ class SecretariesSeeder extends Seeder {
                 "name" => "Secretaría de Planeación y Desarrollo Territorial",
                 "id" => 2
             ],[
-                "name" => "Secretaría de Tecnologías de la Información y Comunicaciones"
+                "name" => "Secretaría de Tecnologías de la Información y Comunicaciones",
+                "id" => 3
             ],[
-                "name" => "Secretaría General"
+                "name" => "Secretaría General",
+                "id" => 4
             ],[
-                "name" => "Secretaría Privada"
+                "name" => "Secretaría Privada",
+                "id" => 5
             ],[
-                "name" => "Secretaría de Agua Potable y Saneamiento Básico"
+                "name" => "Secretaría de Agua Potable y Saneamiento Básico",
+                "id" => 6
             ],[
-                "name" => "Secretaría de Cultura"
+                "name" => "Secretaría de Cultura",
+                "id" => 7
             ],[
-                "name" => "Secretaría de Desarollo Económico"
+                "name" => "Secretaría de Desarollo Económico",
+                "id" => 8
             ],[
-                "name" => "Secretaría de Desarrollo Social"
+                "name" => "Secretaría de Desarrollo Social",
+                "id" => 9
             ],[
-                "name" => "Secretaría de Educación"
+                "name" => "Secretaría de Educación",
+                "id" => 10
             ],[
-                "name" => "Secretaría de Fronteras y Cooperación Internacional"
+                "name" => "Secretaría de Fronteras y Cooperación Internacional",
+                "id" => 11
             ],[
-                "name" => "Secretaría de Gobierno"
+                "name" => "Secretaría de Gobierno",
+                "id" => 12
             ],[
-                "name" => "Secretaría de Hacienda"
+                "name" => "Secretaría de Hacienda",
+                "id" => 13
             ],[
-                "name" => "Secretaría de Infraestructura"
+                "name" => "Secretaría de Infraestructura",
+                "id" => 14
             ],[
-                "name" => "Secretaría de la Mujer"
+                "name" => "Secretaría de la Mujer",
+                "id" => 15
             ],[
-                "name" => "Secretaría de Minas y Energía"
+                "name" => "Secretaría de Minas y Energía",
+                "id" => 16
             ],[
-                "name" => "Secretaría de Tránsito"
+                "name" => "Secretaría de Tránsito",
+                "id" => 17
             ],[
-                "name" => "Secretaría de Vivienda y Medio Ambiente"
+                "name" => "Secretaría de Vivienda y Medio Ambiente",
+                "id" => 18
             ],[
-                "name" => "Secretaría Jurídica"
+                "name" => "Secretaría Jurídica",
+                "id" => 19
             ]
         ];
 
