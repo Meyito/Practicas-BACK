@@ -33,7 +33,7 @@ class UsersSeeder extends Seeder {
                 "secretary_id" => 1,
                 "name" => "Will Carstairs",
                 "role_id" => 2
-            ],
+            ]
         ];
 
         DB::table('users')->insert($users);
