@@ -1,21 +1,37 @@
-# Lumen PHP Framework
+# API Restful de la Aplicación PILI
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![dependencies Status](https://david-dm.org/Meyito/Practicas-BACK/status.svg)](https://david-dm.org/Meyito/Practicas-BACK)
+[![Github Issues](https://img.shields.io/github/issues/Meyito/Practicas-BACK.svg)](http://github.com/Meyito/Practicas-BACK/issues)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+La aplicación fue desarrollada con el Framework [Lumen](http://lumen.laravel.com/docs).
 
-## Official Documentation
+## Requisitos
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+- php >=5.5.9
+- [Composer](https://getcomposer.org/)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Instalación
 
-## License
+### Instalar dependencias 
+```
+composer install
+```
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+### Variables de entorno y configuración
+- Crear archivo .env en la carpeta raiz del proyecto y pegar el contenido del archivo .env.example (Se deben remplazar los valores por los del entorno local)
+
+- Se deben configurar las credenciales de la base de datos en `config/database.php`
+
+### Migraciones de la base de datos
+````
+php artisan migrate:refresh --seed
+````
+
+
+## Errores Conocidos
+- Si al intentar migrar la base de datos aparece un error que indica que alguna clase no fue encontrada ejecutar
+````
+composer dump-autoload
+php artisan migrate:refresh --seed
+```
