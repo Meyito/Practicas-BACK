@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
+/**
+ * Description of User Model
+ *
+ * @author Melissa Delgado
+ */
+
 class User extends BaseModel implements
     AuthenticatableContract,
     AuthorizableContract{

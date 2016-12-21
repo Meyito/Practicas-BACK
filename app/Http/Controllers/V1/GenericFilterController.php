@@ -9,6 +9,11 @@ use App\Models\GenericFilter;
 use App\Repositories\GenericFilterRepository as GenericFilterRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class GenericFilterController extends Controller {
 
     private $generic_filter;

@@ -9,6 +9,11 @@ use App\Models\MotorDisability;
 use App\Repositories\MotorDisabilityRepository as MotorDisabilityRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class MotorDisabilityController extends Controller {
 
     private $motor_disability;

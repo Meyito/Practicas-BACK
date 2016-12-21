@@ -9,6 +9,11 @@ use App\Models\Secretaries;
 use App\Repositories\SecretaryRepository as SecretaryRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class SecretaryController extends Controller {
 
     private $secretary;

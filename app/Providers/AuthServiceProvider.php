@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**

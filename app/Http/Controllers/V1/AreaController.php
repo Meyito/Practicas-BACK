@@ -10,6 +10,11 @@ use App\Repositories\AreaRepository as AreaRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 use Excel;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+ 
 class AreaController extends Controller {
 
     private $area;

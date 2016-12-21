@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 /**
  * Description of BaseModel
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class BaseModel
     extends Model {

@@ -9,6 +9,11 @@ use App\Models\Counter;
 use App\Repositories\CounterRepository as CounterRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class CounterController extends Controller {
 
     private $counter;

@@ -7,7 +7,7 @@ use App\Models\BaseModel;
 /**
  * Description of Person
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class Person extends BaseModel {
 

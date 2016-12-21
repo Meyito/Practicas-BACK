@@ -9,6 +9,11 @@ use App\Models\AdministrativeUnitType;
 use App\Repositories\AdministrativeUnitTypeRepository as AdministrativeUnitTypeRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class AdministrativeUnitTypeController extends Controller {
 
     private $administrative_unit_type;

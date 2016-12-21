@@ -9,6 +9,11 @@ use App\Models\Zone;
 use App\Repositories\ZoneRepository as ZoneRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class ZoneController extends Controller {
 
     private $zone;

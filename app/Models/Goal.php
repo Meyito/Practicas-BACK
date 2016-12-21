@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\BaseModel;
 
 /**
- * Description of Program
+ * Description of Goal Model
  *
  * @author Melissa Delgado
  */

@@ -9,6 +9,11 @@ use App\Models\VictimType;
 use App\Repositories\VictimTypeRepository as VictimTypeRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class VictimTypeController extends Controller {
 
     private $victim_type;

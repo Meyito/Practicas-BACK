@@ -9,6 +9,11 @@ use App\Models\EthnicGroup;
 use App\Repositories\EthnicGroupRepository as EthnicGroupRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class EthnicGroupController extends Controller {
 
     private $ethnic_group;

@@ -7,8 +7,6 @@ use stdClass;
 
 /**
  * Description of UserHelper
- *
- * @author Francisco Bastos <bastosjavier@kubesoft.com>
  */
 class UserHelper
 // extends Helper

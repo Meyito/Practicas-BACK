@@ -9,6 +9,11 @@ use App\Models\HearingImpairment;
 use App\Repositories\IdentificationTypeRepository as IdentificationTypeRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class IdentificationTypeController extends Controller {
 
     private $identification_type;

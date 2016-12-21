@@ -33,7 +33,6 @@ class Area extends BaseModel {
     protected $messages = [
         "name.required" => "El nombre es requerido",
         "code.required" => "El código es requerido",
-        //"code.unique" => "Ya existe una zona con el código suministrado",
         "municipality_id.required" => "El municipio es requerido",
         "municipality_id.exists" => "El municipio es inválido",
         "area_type_id.required" => "El tipo de area es requerida",

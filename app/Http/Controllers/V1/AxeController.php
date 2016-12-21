@@ -9,6 +9,11 @@ use App\Models\Axe;
 use App\Repositories\AxeRepository as AxeRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class AxeController extends Controller {
 
     private $axe;

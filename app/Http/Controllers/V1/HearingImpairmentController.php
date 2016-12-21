@@ -9,6 +9,11 @@ use App\Models\HearingImpairment;
 use App\Repositories\HearingImpairmentRepository as HearingImpairmentRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class HearingImpairmentController extends Controller {
 
     private $hearing_impairment;

@@ -9,6 +9,11 @@ use App\Models\AreaType;
 use App\Repositories\AreaTypeRepository as AreaTypeRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class AreaTypeController extends Controller {
 
     private $area_type;

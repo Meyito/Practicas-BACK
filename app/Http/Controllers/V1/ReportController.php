@@ -10,6 +10,11 @@ use App\Repositories\PersonRepository as PersonRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 use DB;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class ReportController extends Controller {
 
     public function report(Request $request){

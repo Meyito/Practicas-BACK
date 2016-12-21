@@ -11,6 +11,11 @@ use Illuminate\Http\Response as IlluminateResponse;
 use Excel;
 use DB;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class ActivityController extends Controller {
 
     private $activity;

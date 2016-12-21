@@ -9,6 +9,11 @@ use App\Models\Characterization;
 use App\Repositories\CharacterizationRepository as CharacterizationRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class CharacterizationController extends Controller {
 
     private $characterization;

@@ -63,11 +63,5 @@ class DatabaseSeeder extends Seeder
     }
 
     public function seedLocalEnvironment() {
-        $this->call('ContractSeeder');
-        $this->command->info('contracts table seeded!');
-        $this->call('ContractorSeeder');
-        $this->command->info('contractors table seeded!');
-        $this->call('ContractorContractSeeder');
-        $this->command->info('contractor_contracts table seeded!');
     }
 }

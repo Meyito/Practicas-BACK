@@ -9,6 +9,11 @@ use App\Models\Contract;
 use App\Repositories\ContractRepository as ContractRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+ 
 class ContractController extends Controller {
 
     private $contract;

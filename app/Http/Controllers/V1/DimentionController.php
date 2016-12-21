@@ -8,6 +8,11 @@ use App\Models\Dimention;
 use App\Repositories\DimentionRepository as DimentionRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class DimentionController extends Controller {
 
     private $dimention;

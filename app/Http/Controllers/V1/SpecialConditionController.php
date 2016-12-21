@@ -9,6 +9,11 @@ use App\Models\SpecialCondition;
 use App\Repositories\SpecialConditionRepository as SpecialConditionRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class SpecialConditionController extends Controller {
 
     private $special_condition;

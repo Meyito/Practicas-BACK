@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Description of BaseModel
+ * Description of Axe Model
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class Axe extends BaseModel {
 

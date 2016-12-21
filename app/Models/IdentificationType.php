@@ -7,7 +7,7 @@ use App\Models\BaseModel;
 /**
  * Description of IdentificationType
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class IdentificationType extends BaseModel {
 

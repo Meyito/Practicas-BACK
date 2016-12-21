@@ -9,6 +9,11 @@ use App\Models\Gender;
 use App\Repositories\GenderRepository as GenderRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class GenderController extends Controller {
 
     private $gender;

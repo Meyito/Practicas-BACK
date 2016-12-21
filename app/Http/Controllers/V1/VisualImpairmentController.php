@@ -9,6 +9,11 @@ use App\Models\VisualImpairment;
 use App\Repositories\VisualImpairmentRepository as VisualImpairmentRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class VisualImpairmentController extends Controller {
 
     private $visual_impairment;

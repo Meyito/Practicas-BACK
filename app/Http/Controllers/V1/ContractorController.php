@@ -9,6 +9,11 @@ use App\Models\Contractor;
 use App\Repositories\ContractorRepository as ContractorRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class ContractorController extends Controller {
 
     private $contractor;

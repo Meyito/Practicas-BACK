@@ -9,6 +9,11 @@ use App\Models\Department;
 use App\Repositories\DepartmentRepository as DepartmentRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class DepartmentController extends Controller {
 
     private $department;

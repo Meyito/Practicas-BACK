@@ -42,10 +42,6 @@ $app->group([
     function () use ($app) {
         $app->post('login', 'AuthenticationController@login');
         $app->get('logout', 'AuthenticationController@invalidate');
-
-        $app->get('/test', function () use ($app) {
-            return "Welcome to Meyito Backend  :c :3";
-        });
 });
 
 $app->group([

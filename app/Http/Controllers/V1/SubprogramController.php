@@ -9,6 +9,11 @@ use App\Models\Subprogram;
 use App\Repositories\SubprogramRepository as SubprogramRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class SubprogramController extends Controller {
 
     private $subprogram;

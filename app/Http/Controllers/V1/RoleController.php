@@ -9,6 +9,11 @@ use App\Models\Role;
 use App\Repositories\RoleRepository as RoleRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class RoleController extends Controller {
 
     private $role;

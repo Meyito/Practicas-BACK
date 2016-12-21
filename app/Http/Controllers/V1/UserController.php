@@ -10,6 +10,11 @@ use App\Repositories\UserRepository as UserRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class UserController extends Controller {
 
     private $user;

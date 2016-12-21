@@ -9,7 +9,6 @@ use DateTime;
 /**
  *
  * @author Francisco Bastos
- * @email bastosjavier@hotmail.com
  */
 abstract class EloquentRepository {
 

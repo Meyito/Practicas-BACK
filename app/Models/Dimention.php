@@ -7,7 +7,7 @@ use App\Models\BaseModel;
 /**
  * Description of Dimention
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class Dimention extends BaseModel {
 

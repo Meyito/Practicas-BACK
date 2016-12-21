@@ -5,7 +5,7 @@ namespace App\Repositories;
 /**
  * Description of DimentionRepository
  *
- * @author Francisco Bastos
+ * @author Melissa Delgado
  */
 class DimentionRepository extends EloquentRepository {
 

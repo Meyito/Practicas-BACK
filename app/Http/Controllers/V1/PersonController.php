@@ -9,6 +9,11 @@ use App\Models\Person;
 use App\Repositories\PersonRepository as PersonRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class PersonController extends Controller {
 
     private $person;

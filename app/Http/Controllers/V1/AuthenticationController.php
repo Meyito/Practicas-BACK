@@ -12,8 +12,10 @@ use JWTFactory;
 use JWTAuth;
 
 /**
-* Class AuthenticationController
-*/
+ *
+ * @author Melissa Delgado
+ */
+
 class AuthenticationController extends Controller{
 
     private $user;

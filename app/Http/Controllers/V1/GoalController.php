@@ -9,6 +9,11 @@ use App\Models\Goal;
 use App\Repositories\GoalRepository as GoalRepo;
 use Illuminate\Http\Response as IlluminateResponse;
 
+/**
+ *
+ * @author Melissa Delgado
+ */
+
 class GoalController extends Controller {
 
     private $goal;
