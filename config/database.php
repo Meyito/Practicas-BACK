@@ -1,11 +1,23 @@
 <?php
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+/*$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
-$database = substr($url["path"], 1);
+$database = substr($url["path"], 1);*/
+
+$host = "localhost";
+$username = "root";
+$password = "root";
+$database = "scotchbox";
+
+/*DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=scotchbox
+DB_USERNAME=root
+DB_PASSWORD=root*/
 
 return [
     /*
