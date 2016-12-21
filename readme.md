@@ -1,6 +1,5 @@
 # API Restful de la Aplicación PILI
 
-[![dependencies Status](https://david-dm.org/Meyito/Practicas-BACK/status.svg)](https://david-dm.org/Meyito/Practicas-BACK)
 [![Github Issues](https://img.shields.io/github/issues/Meyito/Practicas-BACK.svg)](http://github.com/Meyito/Practicas-BACK/issues)
 
 La aplicación fue desarrollada con el Framework [Lumen](http://lumen.laravel.com/docs).
