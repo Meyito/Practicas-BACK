@@ -47,7 +47,7 @@ class Program extends BaseModel {
     }
 
     function secretaries(){
-        return $this->belongsToMany('App\Models\secretaries', 'secretary_programs', 'program_id', 'secretary_id');
+        return $this->belongsToMany('App\Models\Secretaries', 'secretary_programs', 'program_id', 'secretary_id');
     }
 
 }
